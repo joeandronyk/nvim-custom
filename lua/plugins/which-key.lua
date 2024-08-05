@@ -22,17 +22,9 @@ return {
 
       -- Document existing key chains
       require('which-key').add {
-        { '<leader>d', group = '[D]ebugging' },
-        { '<leader>db', "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = 'Toggle Breakpoint' },
-
-        { '<leader>s', group = '[S]earch' },
-        -- { '<leader>c', group = '[C]ode' },
-        -- { '<leader>d', group = '[D]ocument' },
-        -- { '<leader>r', group = '[R]ename' },
-        -- { '<leader>s', group = '[S]earch' },
-        -- { '<leader>w', group = '[W]orkspace' },
-        -- { '<leader>t', group = '[T]oggle' },
-        -- { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>d', group = 'debugging' },
+        { '<leader>s', group = 'search' },
+        { '<leader>l', group = 'lazy git' },
       }
     end,
   },

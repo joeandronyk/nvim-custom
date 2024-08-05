@@ -84,7 +84,7 @@ return {
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'Search Resume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'Search Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Search Buffers' })
-      vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Search' })
+      vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'find files' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
