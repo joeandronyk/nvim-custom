@@ -41,7 +41,9 @@ return {
       -- require('mini.tabline').setup()
 
       require('mini.icons').setup()
-      require('mini.starter').setup()
+
+      -- Start Page
+      -- require('mini.starter').setup()
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
