@@ -7,7 +7,7 @@ return {
     'mfussenegger/nvim-dap',
   },
   keys = {
-    { 'n', '<leader>db', "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = 'toggle_breakpoint' },
+    { '<leader>db', "<cmd>lua require'dap'.toggle_breakpoint()<cr>", mode = 'n', desc = 'toggle_breakpoint' },
   },
   config = function()
     -- Update the path passed to setup to point to your system or virtual env python binary

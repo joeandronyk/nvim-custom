@@ -8,6 +8,12 @@ vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
+vim.opt.tabstop = 4 -- Number of spaces a tab represents
+vim.opt.shiftwidth = 4 -- Number of spaces for each indentation
+vim.opt.expandtab = true -- Convert tabs to spaces
+vim.opt.smartindent = true -- Automatically indent new lines
+vim.opt.wrap = false -- Disable line wrapping
+vim.opt.termguicolors = true -- Enable 24-bit RGB colors-
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
