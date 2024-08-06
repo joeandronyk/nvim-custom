@@ -6,6 +6,8 @@ return {
       --
       -- Examples:
       --  - va)  - [V]isually select [A]round [)]paren
+      --  - ya"  - [Y]ank [A]round ["] Quote (include quote)
+      --  - yi"  - [Y]ank [I]nside ["] Quote (exclude quote)
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
@@ -31,6 +33,15 @@ return {
       statusline.section_location = function()
         return '%2l:%-2v'
       end
+
+      -- Use Alt + hjkl to move around blocks of selected text
+      require('mini.move').setup()
+
+      -- Show buffer tabs
+      -- require('mini.tabline').setup()
+
+      require('mini.icons').setup()
+      require('mini.starter').setup()
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
