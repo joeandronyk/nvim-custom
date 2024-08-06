@@ -7,6 +7,9 @@ return {
         columns = {
           'icon',
         },
+        -- Set to true to watch the filesystem for changes and reload oil
+        watch_for_changes = true,
+
         -- Window-local options to use for oil buffers
         win_options = {
           wrap = true,
@@ -149,4 +152,3 @@ return {
     end,
   },
 }
-
