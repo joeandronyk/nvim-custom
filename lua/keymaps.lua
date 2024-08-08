@@ -46,4 +46,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- [[ Extra ]]
+vim.keymap.set('n', '<leader>pr', '<CMD> :sp <bar> :term python % <CR>')
+-- nnoremap <C-W> :bd!<CR>)
 -- vim: ts=2 sts=2 sw=2 et
