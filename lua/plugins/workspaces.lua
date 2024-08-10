@@ -27,18 +27,18 @@ return {
       -- enable info-level notifications after adding or removing a workspace
       notify_info = true,
 
-      -- hooks = {
-      --   open_pre = {
-      --     -- If recording, save current session state and stop recording
-      --     "SessionsStop",
-      --
-      --     -- delete all buffers (does not save changes)
-      --     "silent %bdelete!",
-      --   },
-      --   open = function()
-      --     require("sessions").load(nil, { silent = true })
-      --   end,
-      -- },
+      hooks = {
+        open_pre = {
+          -- If recording, save current session state and stop recording
+          'SessionsStop',
+
+          -- delete all buffers (does not save changes)
+          'silent %bdelete!',
+        },
+        open = function()
+          require('sessions').load(nil, { silent = true })
+        end,
+      },
     }
     vim.keymap.set('n', '<leader><enter>', ':Telescope workspaces<cr>')
     require('telescope').load_extension 'workspaces'
