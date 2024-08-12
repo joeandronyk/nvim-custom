@@ -26,6 +26,7 @@ return {
         { '<leader>d', group = 'debugging' },
         { '<leader>s', group = 'search' },
         { '<leader>l', group = 'lazy git' },
+        { '<leader>p', group = 'python' },
       }
     end,
   },
