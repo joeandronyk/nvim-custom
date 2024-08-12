@@ -46,6 +46,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Format file on buffer save using the LSP
+vim.api.nvim_create_autocmd('BufWritePre', {
+  desc = 'Run auto format on pre save.',
+  group = vim.api.nvim_create_augroup('auto-format', { clear = true }),
+  callback = function()
+    vim.lsp.buf.format { timeout_ms = 3000 }
+  end,
+})
+
 -- [[ Extra ]]
 vim.keymap.set('n', '<leader>pr', '<CMD> :sp <bar> :term python % <CR>', { desc = 'Run current buffer in python terminal' })
 -- nnoremap <C-W> :bd!<CR>)
