@@ -23,6 +23,7 @@ return {
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
+      -- - saa(] - [S]urround [A]add [A]round [(]Brace [[]Paren
       require('mini.surround').setup()
 
       -- Simple and easy statusline.
