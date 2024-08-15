@@ -14,6 +14,8 @@ vim.opt.expandtab = true -- Convert tabs to spaces
 vim.opt.smartindent = true -- Automatically indent new lines
 vim.opt.wrap = true -- Enable line wrapping
 vim.opt.termguicolors = true -- Enable 24-bit RGB colors-
+vim.opt.foldmethod = 'indent'
+vim.opt.foldlevel = 99
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
