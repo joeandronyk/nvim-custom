@@ -56,6 +56,8 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 
 -- [[ Extra ]]
-vim.keymap.set('n', '<leader>pr', '<CMD> :sp <bar> :term python % <CR>', { desc = 'Run current buffer in python terminal' })
+vim.keymap.set('n', '<leader>pr', '<CMD> :sp <bar> :term python % <CR>',
+  { desc = 'Run current buffer in python terminal' })
+vim.keymap.set('n', '<leader>pw', '<CMD> :sp <bar> :term python -m build <CR>', { desc = 'Build Python Wheel' })
 -- nnoremap <C-W> :bd!<CR>)
 -- vim: ts=2 sts=2 sw=2 et
