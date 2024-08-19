@@ -46,14 +46,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Format file on buffer save using the LSP
--- vim.api.nvim_create_autocmd('BufWritePre', {
---   desc = 'Run auto format on pre save.',
---   group = vim.api.nvim_create_augroup('auto-format', { clear = true }),
---   callback = function()
---     vim.lsp.buf.format { timeout_ms = 3000, async = false }
---   end,
--- })
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("Auto-Format", { clear = true }),
   callback = function(args)
