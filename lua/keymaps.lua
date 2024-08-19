@@ -46,17 +46,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- vim.api.nvim_create_autocmd("LspAttach", {
---   group = vim.api.nvim_create_augroup("Auto-Format", { clear = true }),
---   callback = function(args)
---     vim.api.nvim_create_autocmd("BufWritePre", {
---       buffer = args.buf,
---       callback = function()
---         vim.lsp.buf.format { async = false, id = args.data.client_id }
---       end,
---     })
---   end
--- })
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('Auto-Format', { clear = true }),
+  callback = function(args)
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      buffer = args.buf,
+      callback = function()
+        vim.lsp.buf.format { async = false, id = args.data.client_id }
+      end,
+    })
+  end,
+})
 
 -- [[ Extra ]]
 vim.keymap.set('n', '<leader>pr', '<CMD> :sp <bar> :term python % <CR>', { desc = 'Run current buffer in python terminal' })
