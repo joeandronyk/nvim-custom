@@ -4,6 +4,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
+
   config = function()
     -- import mason
     local mason = require 'mason'
@@ -22,7 +23,7 @@ return {
     }
 
     mason_lspconfig.setup {
-      -- list of lps servers for mason to install
+      lazy = true,
       ensure_installed = {
         'lua_ls',
         'pyright',
@@ -31,11 +32,11 @@ return {
     }
 
     mason_tool_installer.setup {
-      -- list of formatters
+      lazy = true,
       ensure_installed = {
         'prettier', -- prettier formatter
-        'stylua', -- lua formatter
-        'ruff', -- python formatter
+        'stylua',   -- lua formatter
+        'ruff',     -- python formatter
         'debugpy',
       },
     }
