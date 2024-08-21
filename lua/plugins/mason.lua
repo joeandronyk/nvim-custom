@@ -28,6 +28,7 @@ return {
         'lua_ls',
         'pyright',
         'jsonls',
+        'yamlls',
       },
     }
 
