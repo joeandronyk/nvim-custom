@@ -22,12 +22,15 @@ return {
 
       -- Document existing key chains
       require('which-key').add {
-        { '<leader>b', group = 'buffer' },
-        { '<leader>c', group = 'code' },
-        { '<leader>d', group = 'debugging' },
-        { '<leader>s', group = 'search' },
-        { '<leader>l', group = 'lazy git' },
-        { '<leader>p', group = 'python' },
+        { '<leader>b', group = 'Buffer' },
+        { '<leader>c', group = 'Code' },
+        { '<leader>d', group = 'Debugging' },
+        { '<leader>f', group = 'Find' },
+        { '<leader>g', group = 'Git' },
+        { '<leader>h', group = 'Harpoon' },
+        { '<leader>l', group = 'Lazygit' },
+        { '<leader>p', group = 'Python' },
+        { '<leader>u', group = 'Scratches' },
       }
     end,
   },

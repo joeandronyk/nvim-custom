@@ -10,7 +10,7 @@ return {
 
     local wk = require 'which-key'
     wk.add {
-      { '<leader>h', group = 'harpoon' },
+      -- { '<leader>h', group = 'Harpoon' },
       {
         '<leader>hw',
         function()
