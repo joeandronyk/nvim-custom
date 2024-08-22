@@ -23,6 +23,7 @@ return {
       -- Document existing key chains
       require('which-key').add {
         { '<leader>b', group = 'buffer' },
+        { '<leader>c', group = 'code' },
         { '<leader>d', group = 'debugging' },
         { '<leader>s', group = 'search' },
         { '<leader>l', group = 'lazy git' },
