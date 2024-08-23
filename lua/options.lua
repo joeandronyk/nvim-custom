@@ -72,4 +72,9 @@ vim.opt.scrolloff = 10
 
 vim.opt.swapfile = false
 
+-- Change the windows terminal tab name to be the cwd.  The double backslash
+-- is for windows.  On linux we would need to use a forward slash.
+vim.opt.title = true
+vim.opt.titlestring = [[%{substitute(getcwd(),'^.*\\','','')}]]
+
 -- vim: ts=2 sts=2 sw=2 et
