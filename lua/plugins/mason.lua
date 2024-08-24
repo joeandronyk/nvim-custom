@@ -36,8 +36,8 @@ return {
       lazy = true,
       ensure_installed = {
         'prettier', -- prettier formatter
-        'stylua',   -- lua formatter
-        'ruff',     -- python formatter
+        'stylua', -- lua formatter
+        'ruff-lsp', -- python formatter
         'debugpy',
       },
     }
