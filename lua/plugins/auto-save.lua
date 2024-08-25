@@ -1,6 +1,6 @@
 return {
   'Pocco81/auto-save.nvim',
-  vim.api.nvim_set_keymap('n', '<leader>n', ':ASToggle<CR>', {}),
+  vim.api.nvim_set_keymap('n', '<leader>a', ':ASToggle<CR>', { desc = 'Toggle AutoSave' }),
   config = function()
     require('auto-save').setup {
       enabled = true, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
