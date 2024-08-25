@@ -1,18 +1,13 @@
 return {
-  -- https://github.com/mfussenegger/nvim-dap-python
   'mfussenegger/nvim-dap-python',
   ft = 'python',
-  dependencies = {
-    -- https://github.com/mfussenegger/nvim-dap
-    'mfussenegger/nvim-dap',
-  },
+  dependencies = { 'mfussenegger/nvim-dap' },
   keys = {
     { '<leader>db', "<cmd>lua require'dap'.toggle_breakpoint()<cr>", mode = 'n', desc = 'Add Breakpoint' },
   },
   config = function()
-    -- Update the path passed to setup to point to your system or virtual env python binary
-    require('dap-python').setup '.venv/Scripts/python.exe'
-    -- require("dap-python").setup("C:/Program Files/Autodesk/Maya2023/bin/maya.exe")
+    require('dap-python').setup 'python'
+
     table.insert(require('dap').configurations.python, {
       type = 'debugpy',
       request = 'attach',
@@ -26,6 +21,17 @@ return {
       redirectOutput = false,
       logToFile = true,
       -- sourceMaps = true,
+    })
+
+    table.insert(require('dap').configurations.python, {
+      -- The first three options are required by nvim-dap
+      type = 'python', -- the type here established the link to the adapter definition: `dap.adapters.python`
+      request = 'launch',
+      name = 'Python3: Launch file',
+      program = '${file}', -- This configuration will launch the current file if used.
+      pythonPath = require('venv-selector').venv(),
+      redirectOutput = false,
+      console = 'integratedTerminal',
     })
   end,
 }
