@@ -31,7 +31,3 @@ return {
     }
   end,
 }
-
--- substitute(getcwd(), "^.*\\", "", "")
--- vim.api.nvim_command('set title')
--- vim.api.nvim_command('let &titlestring="My Neovim"')
