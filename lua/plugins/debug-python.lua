@@ -25,10 +25,10 @@ return {
 
     table.insert(require('dap').configurations.python, {
       -- The first three options are required by nvim-dap
-      type = 'python', -- the type here established the link to the adapter definition: `dap.adapters.python`
+      type = 'python',
       request = 'launch',
       name = 'Python3: Launch file',
-      program = '${file}', -- This configuration will launch the current file if used.
+      program = '${file}',
       pythonPath = require('venv-selector').venv(),
       redirectOutput = false,
       console = 'integratedTerminal',
