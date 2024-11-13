@@ -127,7 +127,7 @@ return {
       vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = 'Find current Word' })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find by Grep' })
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find Diagnostics' })
-      vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Find Resume' })
+      -- vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Find Resume' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = 'Find Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
       -- vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Find Files' })
