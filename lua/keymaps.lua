@@ -33,10 +33,10 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Window Resizing
-vim.keymap.set('n', '<S-h>', '<CMD>:vertical resize +10<CR>', { desc = 'Open In Explorer' })
-vim.keymap.set('n', '<S-l>', '<CMD>:vertical resize -10<CR>', { desc = 'Open In Explorer' })
-vim.keymap.set('n', '<S-j>', '<CMD>:horizontal resize +5<CR>', { desc = 'Open In Explorer' })
-vim.keymap.set('n', '<S-k>', '<CMD>:horizontal resize -5<CR>', { desc = 'Open In Explorer' })
+-- vim.keymap.set('n', '<S-h>', '<CMD>:vertical resize +10<CR>', { desc = 'Open In Explorer' })
+-- vim.keymap.set('n', '<S-l>', '<CMD>:vertical resize -10<CR>', { desc = 'Open In Explorer' })
+-- vim.keymap.set('n', '<S-j>', '<CMD>:horizontal resize +5<CR>', { desc = 'Open In Explorer' })
+-- vim.keymap.set('n', '<S-k>', '<CMD>:horizontal resize -5<CR>', { desc = 'Open In Explorer' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
