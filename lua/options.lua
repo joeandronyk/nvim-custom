@@ -7,7 +7,7 @@
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.tabstop = 4 -- Number of spaces a tab represents
 vim.opt.shiftwidth = 4 -- Number of spaces for each indentation
 vim.opt.expandtab = true -- Convert tabs to spaces
