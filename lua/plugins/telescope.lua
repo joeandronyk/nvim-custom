@@ -111,6 +111,22 @@ return {
           persisted = {
             layout_config = { width = 0.55, height = 0.55 },
           },
+          aerial = {
+            -- Set the width of the first two columns (the second
+            -- is relevant only when show_columns is set to 'both')
+            col1_width = 4,
+            col2_width = 30,
+            -- How to format the symbols
+            format_symbol = function(symbol_path, filetype)
+              if filetype == 'json' or filetype == 'yaml' then
+                return table.concat(symbol_path, '.')
+              else
+                return symbol_path[#symbol_path]
+              end
+            end,
+            -- Available modes: symbols, lines, both
+            show_columns = 'both',
+          },
         },
       }
 
@@ -118,12 +134,14 @@ return {
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
       pcall(require('telescope').load_extension 'persisted')
+      pcall(require('telescope').load_extension 'aerial')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find Help' })
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Find Keymaps' })
       -- vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = 'Find Select Telescope' })
+      vim.keymap.set('n', '<leader>fs', '<cmd>Telescope aerial<cr>', { desc = 'Find Symbols' })
       vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = 'Find current Word' })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find by Grep' })
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find Diagnostics' })
