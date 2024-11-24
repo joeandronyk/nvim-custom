@@ -14,7 +14,5 @@ return {
         vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
       end,
     }
-    -- You probably also want to set a keymap to toggle aerial
-    vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
   end,
 }
