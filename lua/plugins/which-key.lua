@@ -30,8 +30,9 @@ return {
         { '<leader>h', group = 'Harpoon' },
         { '<leader>l', group = 'Lazygit' },
         { '<leader>p', group = 'Python' },
+        { '<leader>r', group = 'Refactor' },
         { '<leader>t', group = 'Trouble' },
-        { '<leader>u', group = 'Scratches' },
+        { '<leader>s', group = 'Scratches' },
       }
     end,
   },

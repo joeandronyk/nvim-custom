@@ -7,15 +7,12 @@ return {
     config = function()
       local scretch = require 'scretch'
 
-      vim.keymap.set('n', '<leader>un', scretch.new, { desc = 'New Scratch' })
-      vim.keymap.set('n', '<leader>unn', scretch.new_named, { desc = 'New Named Scratch' })
-      vim.keymap.set('n', '<leader>uft', scretch.new_from_template, { desc = 'New Scratch File from Template' })
-      vim.keymap.set('n', '<leader>ul', scretch.last, { desc = 'Last Scratch' })
-      vim.keymap.set('n', '<leader>us', scretch.search, { desc = 'Search Scratches' })
-      vim.keymap.set('n', '<leader>ut', scretch.edit_template, { desc = 'Edit Scratch Template' })
-      vim.keymap.set('n', '<leader>ug', scretch.grep, { desc = 'Gret Scratches' })
-      vim.keymap.set('n', '<leader>uv', scretch.explore, { desc = 'Explore Scratches' })
-      vim.keymap.set('n', '<leader>uat', scretch.save_as_template, { desc = 'Save As Scratch Template' })
+      vim.keymap.set('n', '<leader>sn', scretch.new, { desc = 'New Scratch' })
+      vim.keymap.set('n', '<leader>snn', scretch.new_named, { desc = 'New Named Scratch' })
+      vim.keymap.set('n', '<leader>sl', scretch.last, { desc = 'Last Scratch' })
+      vim.keymap.set('n', '<leader>ss', scretch.search, { desc = 'Search Scratches' })
+      vim.keymap.set('n', '<leader>sg', scretch.grep, { desc = 'Gret Scratches' })
+      vim.keymap.set('n', '<leader>sv', scretch.explore, { desc = 'Explore Scratches' })
 
       require('scretch').setup {
         scretch_dir = vim.fn.stdpath 'config' .. '/scretch/', -- will be created if it doesn't exist
