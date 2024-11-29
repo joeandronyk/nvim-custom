@@ -1,4 +1,5 @@
 return {
+
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -16,6 +17,7 @@ return {
       vim.cmd.hi 'Comment gui=none'
     end,
   },
+
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -170,174 +172,180 @@ return {
   },
 
   {
-    {
-      'rebelot/kanagawa.nvim',
-      priority = 1000,
-      config = function()
-        require('kanagawa').setup {
-          compile = false, -- enable compiling the colorscheme
-          undercurl = true, -- enable undercurls
-          commentStyle = { italic = true },
-          functionStyle = { bold = true },
-          keywordStyle = { italic = true },
-          statementStyle = { bold = true },
-          typeStyle = {},
-          transparent = true, -- do not set background color
-          globalStatus = true,
-          dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-          terminalColors = true, -- define vim.g.terminal_color_{0,17}
-          colors = {
-            theme = {
-              dragon = {
-                syn = {
-                  comment = '#16161D',
-                  string = '#16161D',
-                },
-              },
-              all = {
-                ui = {
-                  bg_gutter = 'none',
-                },
+    'rebelot/kanagawa.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('kanagawa').setup {
+        compile = false, -- enable compiling the colorscheme
+        undercurl = true, -- enable undercurls
+        commentStyle = { italic = true },
+        functionStyle = { bold = true },
+        keywordStyle = { italic = true },
+        statementStyle = { bold = true },
+        typeStyle = {},
+        transparent = true, -- do not set background color
+        globalStatus = true,
+        dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+        terminalColors = true, -- define vim.g.terminal_color_{0,17}
+        colors = {
+          palette = {
+            sumiInk0 = '#14141a',
+            sumiInk1 = '#15151d',
+            sumiInk2 = '#17171e',
+            sumiInk3 = '#1c1c24',
+            sumiInk4 = '#262631',
+            sumiInk5 = '#30303f',
+            sumiInk6 = '#4b4b61',
+          },
+          theme = {
+            all = {
+              ui = {
+                bg_gutter = 'none',
               },
             },
           },
-          overrides = function(colors)
-            local theme = colors.theme
-            return {
-              TelescopeTitle = { fg = theme.ui.special, bold = true },
-              TelescopePromptNormal = { bg = 'none' },
-              TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = 'none' },
-              TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = 'none' },
-              TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = 'none' },
-              TelescopePreviewNormal = { bg = 'none' },
-              TelescopePreviewBorder = { fg = theme.ui.bg_dim, bg = 'none' },
-              NormalFloat = { bg = 'none' },
-              FloatTitle = { bg = 'none' },
-              FloatBorder = { bg = 'none' },
-              LazyNormal = { bg = 'none', fg = theme.ui.fg_dim },
-              MasonNormal = { bg = 'none', fg = theme.ui.fg_dim },
-              Pmenu = { fg = theme.ui.shade0, bg = 'none', blend = vim.o.pumblend },
-              PmenuSel = { fg = 'NONE', bg = theme.ui.bg_p2 },
-              PmenuSbar = { bg = theme.ui.bg_m1 },
-              PmenuThumb = { bg = theme.ui.bg_p2 },
-              NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-              CursorLine = { bg = '#282c41', fg = '#acb4c2' }, -- match lualine's nightfly theme
-              -- TroubleNormal = { link = 'NormalDark' },
-              -- TroubleNormalNC = { link = 'TroubleNormal' },
-              -- NeoTreeNormal = { link = 'NormalDark' },
-              -- DiagnosticVirtualTextError = {
-              --   fg = theme.diag.error,
-              --   bg = c(theme.diag.error):blend(theme.ui.bg, 0.95):to_hex(),
-              -- },
-              -- DiagnosticVirtualTextWarn = {
-              --   fg = theme.diag.warning,
-              --   bg = c(theme.diag.warning):blend(theme.ui.bg, 0.95):to_hex(),
-              -- },
-              -- DiagnosticVirtualTextHint = {
-              --   fg = theme.diag.hint,
-              --   bg = c(theme.diag.hint):blend(theme.ui.bg, 0.95):to_hex(),
-              -- },
-              -- DiagnosticVirtualTextInfo = {
-              --   fg = theme.diag.info,
-              --   bg = c(theme.diag.info):blend(theme.ui.bg, 0.95):to_hex(),
-              -- },
-              -- DiagnosticVirtualTextOk = {
-              --   fg = theme.diag.ok,
-              --   bg = c(theme.diag.ok):blend(theme.ui.bg, 0.95):to_hex(),
-              -- },
-            }
-          end,
-          theme = 'wave', -- Load "wave" theme when 'background' option is not set
-          background = { -- map the value of 'background' option to a theme
-            dark = 'dragon', -- try "dragon" !
-            light = 'lotus',
-          },
-        }
-        -- setup must be called before loading
-        vim.cmd.colorscheme 'kanagawa'
-      end,
-    },
+        },
+        overrides = function(colors)
+          local theme = colors.theme
+          return {
+            TelescopeTitle = { fg = theme.ui.special, bold = true },
+            TelescopePromptNormal = { bg = 'none' },
+            TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = 'none' },
+            TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = 'none' },
+            TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = 'none' },
+            TelescopePreviewNormal = { bg = 'none' },
+            TelescopePreviewBorder = { fg = theme.ui.bg_dim, bg = 'none' },
+            NormalFloat = { bg = 'none' },
+            FloatTitle = { bg = 'none' },
+            FloatBorder = { bg = 'none' },
+            LazyNormal = { bg = 'none', fg = theme.ui.fg_dim },
+            MasonNormal = { bg = 'none', fg = theme.ui.fg_dim },
+            Pmenu = { fg = theme.ui.shade0, bg = 'none', blend = vim.o.pumblend },
+            PmenuSel = { fg = 'none', bg = theme.ui.bg_p2 },
+            PmenuSbar = { bg = theme.ui.bg_m1 },
+            PmenuThumb = { bg = theme.ui.bg_p2 },
+            NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+            CursorLine = { bg = '#282c41', fg = '#acb4c2' }, -- match lualine's nightfly theme
+            String = { fg = colors.palette.sumiInk0 },
+            Comment = { fg = colors.palette.sumiInk0 },
 
-    {
-      'ellisonleao/gruvbox.nvim',
-      priority = 1000,
-      -- 'LazyVim/LazyVim',
-      -- opts = {
-      --   colorscheme = 'gruvbox',
-      --   background = 'dark',
-      -- },
-      config = function()
-        require('gruvbox').setup {
-          terminal_colors = true, -- add neovim terminal colors
-          undercurl = true,
-          underline = true,
-          bold = true,
-          italic = {
-            strings = true,
-            emphasis = true,
-            comments = true,
-            operators = false,
-            folds = true,
-          },
-          strikethrough = true,
-          invert_selection = false,
-          invert_signs = false,
-          invert_tabline = false,
-          invert_intend_guides = false,
-          inverse = false, -- invert background for search, diffs, statuslines and errors
-          contrast = 'soft', -- can be "hard", "soft" or empty string
-          palette_overrides = {},
-          overrides = {},
-          dim_inactive = false,
-          transparent_mode = true,
-        }
-        -- vim.cmd.colorscheme 'gruvbox'
-      end,
-    },
+            -- TroubleNormal = { link = 'NormalDark' },
+            -- TroubleNormalNC = { link = 'TroubleNormal' },
+            -- NeoTreeNormal = { link = 'NormalDark' },
+            -- DiagnosticVirtualTextError = {
+            --   fg = theme.diag.error,
+            --   bg = c(theme.diag.error):blend(theme.ui.bg, 0.95):to_hex(),
+            -- },
+            -- DiagnosticVirtualTextWarn = {
+            --   fg = theme.diag.warning,
+            --   bg = c(theme.diag.warning):blend(theme.ui.bg, 0.95):to_hex(),
+            -- },
+            -- DiagnosticVirtualTextHint = {
+            --   fg = theme.diag.hint,
+            --   bg = c(theme.diag.hint):blend(theme.ui.bg, 0.95):to_hex(),
+            -- },
+            -- DiagnosticVirtualTextInfo = {
+            --   fg = theme.diag.info,
+            --   bg = c(theme.diag.info):blend(theme.ui.bg, 0.95):to_hex(),
+            -- },
+            -- DiagnosticVirtualTextOk = {
+            --   fg = theme.diag.ok,
+            --   bg = c(theme.diag.ok):blend(theme.ui.bg, 0.95):to_hex(),
+            -- },
+          }
+        end,
+        -- theme = 'dragon', -- Load "wave" theme when 'background' option is not set
+        -- background = { -- map the value of 'background' option to a theme
+        --   dark = 'dragon', -- try "dragon" !
+        --   light = 'lotus',
+        -- },
+      }
+      -- setup must be called before loading
+      vim.cmd 'colorscheme kanagawa-dragon'
+    end,
+  },
 
-    {
-      'ellisonleao/gruvbox.nvim',
-      priority = 1000,
-      'LazyVim/LazyVim',
-      opts = {
-        colorscheme = 'gruvbox',
-        background = 'dark',
-      },
-      config = function()
-        require('gruvbox').setup {
-          terminal_colors = true, -- add neovim terminal colors
-          undercurl = true,
-          underline = true,
-          bold = true,
-          italic = {
-            strings = true,
-            emphasis = true,
-            comments = true,
-            operators = false,
-            folds = true,
-          },
-          strikethrough = true,
-          invert_selection = false,
-          invert_signs = false,
-          invert_tabline = false,
-          invert_intend_guides = false,
-          inverse = false, -- invert background for search, diffs, statuslines and errors
-          contrast = 'soft', -- can be "hard", "soft" or empty string
-          palette_overrides = {},
-          overrides = {},
-          dim_inactive = false,
-          transparent_mode = true,
-        }
-      end,
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+    -- 'LazyVim/LazyVim',
+    -- opts = {
+    --   colorscheme = 'gruvbox',
+    --   background = 'dark',
+    -- },
+    config = function()
+      require('gruvbox').setup {
+        terminal_colors = true, -- add neovim terminal colors
+        undercurl = true,
+        underline = true,
+        bold = true,
+        italic = {
+          strings = true,
+          emphasis = true,
+          comments = true,
+          operators = false,
+          folds = true,
+        },
+        strikethrough = true,
+        invert_selection = false,
+        invert_signs = false,
+        invert_tabline = false,
+        invert_intend_guides = false,
+        inverse = false, -- invert background for search, diffs, statuslines and errors
+        contrast = 'soft', -- can be "hard", "soft" or empty string
+        palette_overrides = {},
+        overrides = {},
+        dim_inactive = false,
+        transparent_mode = true,
+      }
+      -- vim.cmd.colorscheme 'gruvbox'
+    end,
+  },
+
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+    'LazyVim/LazyVim',
+    opts = {
+      colorscheme = 'gruvbox',
+      background = 'dark',
     },
-    {
-      'mellow-theme/mellow.nvim',
-      config = function()
-        vim.g.mellow_italic_comments = true
-        vim.g.mellow_bold_functions = true
-        vim.g.italic_booleans = true
-        vim.g.mellow_transparent = true
-      end,
-    },
+    config = function()
+      require('gruvbox').setup {
+        terminal_colors = true, -- add neovim terminal colors
+        undercurl = true,
+        underline = true,
+        bold = true,
+        italic = {
+          strings = true,
+          emphasis = true,
+          comments = true,
+          operators = false,
+          folds = true,
+        },
+        strikethrough = true,
+        invert_selection = false,
+        invert_signs = false,
+        invert_tabline = false,
+        invert_intend_guides = false,
+        inverse = false, -- invert background for search, diffs, statuslines and errors
+        contrast = 'soft', -- can be "hard", "soft" or empty string
+        palette_overrides = {},
+        overrides = {},
+        dim_inactive = false,
+        transparent_mode = true,
+      }
+    end,
+  },
+
+  {
+    'mellow-theme/mellow.nvim',
+    config = function()
+      vim.g.mellow_italic_comments = true
+      vim.g.mellow_bold_functions = true
+      vim.g.italic_booleans = true
+      vim.g.mellow_transparent = true
+    end,
   },
 }
