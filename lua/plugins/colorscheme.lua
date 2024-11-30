@@ -197,13 +197,13 @@ return {
                 string = '#84a39a', -- done
                 number = '#aaabb8', -- done
                 constant = '#caa18d', -- done bools
-                identifier = '#9599be', -- done
+                -- identifier = '#bcbfd0', -- done
+                identifier = '#9d9ec3', -- done
                 parameter = '#b299a7', -- done
 
                 fun = '#7389a5', -- done
-                -- fun = '#9c9dc0', -- done
                 statement = '#000000', -- NOT SURE
-                keyword = '#a490ba', -- done
+                keyword = '#a490ba', -- done keyword class, lambda etc
                 operator = '#5eaeb0', -- done = sign
                 preproc = '#b08b9f', -- done import, from
                 type = '#858fae', -- done modules
@@ -212,7 +212,8 @@ return {
                 comment = '#545565', -- done
                 punct = '#6d6c7a', -- done
                 -- special = '#545565',
-                special1 = '#c19380', -- require statement
+                -- special1 = '#c19380', -- require statement, class
+                special1 = '#C0A36E', -- require statement, class
                 special2 = '#a38d8e', -- done self
                 special3 = '#a38d8e', -- done return
                 -- delimiter = '#545565',
