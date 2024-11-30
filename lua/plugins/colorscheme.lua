@@ -168,12 +168,12 @@ return {
     priority = 1000,
     config = function()
       require('kanagawa').setup {
-        compile = false, -- enable compiling the colorscheme
+        compile = true, -- enable compiling the colorscheme
         undercurl = true, -- enable undercurls
         commentStyle = { italic = true },
-        functionStyle = { bold = true },
+        functionStyle = { bold = false },
         keywordStyle = { italic = true },
-        statementStyle = { bold = true },
+        statementStyle = { bold = false },
         typeStyle = {},
         transparent = true, -- do not set background color
         globalStatus = true,
@@ -184,6 +184,8 @@ return {
             all = {
               ui = {
                 bg_gutter = 'none',
+                bg_m3 = '#2c3043', -- match lualine
+                fg = '#c0c2d4',
               },
               syn = {
                 string = '#84a39a', -- done
@@ -192,7 +194,9 @@ return {
                 constant = '#caa18d', -- done bools
                 identifier = '#9599be', -- done
                 parameter = '#b299a7', -- done
-                fun = '#9c9dc0', -- done
+
+                fun = '#7389a5', -- done
+                -- fun = '#9c9dc0', -- done
                 statement = '#000000', -- NOT SURE
                 keyword = '#a490ba', -- done
                 operator = '#5eaeb0', -- done = sign
@@ -232,7 +236,7 @@ return {
             PmenuSbar = { bg = theme.ui.bg_m1 },
             PmenuThumb = { bg = theme.ui.bg_p2 },
             NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-            CursorLine = { bg = '#282c41', fg = '#acb4c2' }, -- match lualine's nightfly theme
+            CursorLine = { bg = '#2c3043', fg = '#acb4c2' }, -- match lualine's nightfly theme
             -- String = { fg = '#88a79a' },
             -- Comment = { fg = '#545565' },
             -- -- Keyword = { fg = '#b4b8d0' },
