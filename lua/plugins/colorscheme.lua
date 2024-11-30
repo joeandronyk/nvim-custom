@@ -22,64 +22,55 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,
-    opts = {
-      transparent_background = true, -- disables setting the background color.
-      show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-      term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
-      no_italic = false, -- Force no italic
-      no_bold = false, -- Force no bold
-      no_underline = false, -- Force no underline
-      styles = {
-        comments = { 'italic' },
-        functions = { 'bold' },
-        keywords = { 'italic' },
-        operators = { 'bold' },
-        conditionals = { 'bold' },
-        loops = { 'bold' },
-        booleans = { 'bold', 'italic' },
-        numbers = {},
-        types = {},
-        strings = {},
-        variables = {},
-        properties = {},
-      },
-      highlight_overrides = {
-        all = function(colors)
-          return {
-            NvimTreeNormal = { fg = colors.none },
-            CmpBorder = { fg = '#3e4145' },
-          }
-        end,
-        latte = function(latte)
-          return {
-            Normal = { fg = latte.base },
-          }
-        end,
-        frappe = function(frappe)
-          return {
-            ['@comment'] = { fg = frappe.surface2, style = { 'italic' } },
-          }
-        end,
-        macchiato = function(macchiato)
-          return {
-            LineNr = { fg = macchiato.overlay1 },
-          }
-        end,
-        mocha = function(mocha)
-          return {
-            Comment = { fg = mocha.crust },
-          }
-        end,
-      },
-    },
-    config = function(_, opts)
-      require('catppuccin').setup(opts)
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      -- vim.cmd.colorscheme 'catppuccin-latte'
-      -- vim.cmd.colorscheme 'catppuccin-frappe'
-      -- vim.cmd.colorscheme 'catppuccin-macchiato'
+    config = function()
+      require('catppuccin').setup {
+        flavour = 'mocha', -- latte, frappe, macchiato, mocha
+        background = { -- :h background
+          light = 'latte',
+          dark = 'mocha',
+        },
+        transparent_background = true, -- disables setting the background color.
+        show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+        term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+        dim_inactive = {
+          enabled = false, -- dims the background color of inactive window
+          shade = 'dark',
+          percentage = 0.15, -- percentage of the shade to apply to the inactive window
+        },
+        no_italic = false, -- Force no italic
+        no_bold = false, -- Force no bold
+        no_underline = false, -- Force no underline
+        styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+          comments = { 'italic' }, -- Change the style of comments
+          conditionals = { 'italic' },
+          loops = {},
+          functions = {},
+          keywords = {},
+          strings = {},
+          variables = {},
+          numbers = {},
+          booleans = {},
+          properties = {},
+          types = {},
+          operators = {},
+          -- miscs = {}, -- Uncomment to turn off hard-coded styles
+        },
+        color_overrides = {},
+        custom_highlights = {},
+        default_integrations = true,
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          nvimtree = true,
+          treesitter = true,
+          notify = false,
+          mini = {
+            enabled = true,
+            indentscope_color = '',
+          },
+          -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+        },
+      }
       -- vim.cmd.colorscheme 'catppuccin-mocha'
     end,
   },
@@ -189,19 +180,34 @@ return {
         dimInactive = false, -- dim inactive window `:h hl-NormalNC`
         terminalColors = true, -- define vim.g.terminal_color_{0,17}
         colors = {
-          palette = {
-            sumiInk0 = '#14141a',
-            sumiInk1 = '#15151d',
-            sumiInk2 = '#17171e',
-            sumiInk3 = '#1c1c24',
-            sumiInk4 = '#262631',
-            sumiInk5 = '#30303f',
-            sumiInk6 = '#4b4b61',
-          },
           theme = {
             all = {
               ui = {
                 bg_gutter = 'none',
+              },
+              syn = {
+                string = '#84a39a', -- done
+                variable = '#000000', -- done doesnt work
+                number = '#aaabb8', -- done
+                constant = '#caa18d', -- done bools
+                identifier = '#9599be', -- done
+                parameter = '#b299a7', -- done
+                fun = '#9c9dc0', -- done
+                statement = '#000000', -- NOT SURE
+                keyword = '#a490ba', -- done
+                operator = '#5eaeb0', -- done = sign
+                preproc = '#b08b9f', -- done import, from
+                type = '#858fae', -- done modules
+                regex = '#545565',
+                deprecated = '#545565',
+                comment = '#545565', -- done
+                punct = '#6d6c7a', -- done
+                -- special = '#545565',
+                special1 = '#c19380', -- require statement
+                special2 = '#a38d8e', -- done self
+                special3 = '#a38d8e', -- done return
+                -- delimiter = '#545565',
+                -- typedef = '#545565',
               },
             },
           },
@@ -227,8 +233,19 @@ return {
             PmenuThumb = { bg = theme.ui.bg_p2 },
             NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
             CursorLine = { bg = '#282c41', fg = '#acb4c2' }, -- match lualine's nightfly theme
-            String = { fg = colors.palette.sumiInk0 },
-            Comment = { fg = colors.palette.sumiInk0 },
+            -- String = { fg = '#88a79a' },
+            -- Comment = { fg = '#545565' },
+            -- -- Keyword = { fg = '#b4b8d0' },
+            -- Variable = { fg = '#545565' },
+            -- Keyword = { fg = '#545565' },
+            -- Special = { fg = '#545565' },
+            -- Identifier = { fg = '#545565' },
+            -- Parameter = { fg = '#545565' },
+            -- Statement = { fg = '#545565' }, -- For control flow statements like if, else, while, etc.
+            -- Special1 = { fg = '#545565' },
+            -- Special2 = { fg = '#545565' },
+            -- Special3 = { fg = '#545565' },
+            -- Function = { fg = '#545565' },
 
             -- TroubleNormal = { link = 'NormalDark' },
             -- TroubleNormalNC = { link = 'TroubleNormal' },
@@ -262,7 +279,7 @@ return {
         -- },
       }
       -- setup must be called before loading
-      vim.cmd 'colorscheme kanagawa-dragon'
+      vim.cmd 'colorscheme kanagawa-wave'
     end,
   },
 
