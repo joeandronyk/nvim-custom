@@ -2,11 +2,24 @@ return {
   {
     'folke/noice.nvim',
     event = 'VeryLazy',
-    opts = {
+    require('noice').setup {
+      lsp = {
+        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        enabled = true,
+        view = 'mini',
+        override = {
+          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+          ['vim.lsp.util.stylize_markdown'] = true,
+          ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+        },
+      },
+      -- you can enable a preset for easier configuration
       presets = {
-        -- This is the search bar or popup that shows up when you press /
-        -- Setting this to false makes it a popup and true the search bar at the bottom
-        bottom_search = false,
+        bottom_search = true, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
+        long_message_to_split = true, -- long messages will be sent to a split
+        inc_rename = false, -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false, -- add a border to hover docs and signature help
       },
       messages = {
         -- NOTE: If you enable messages, then the cmdline is enabled automatically.
@@ -27,13 +40,6 @@ return {
         enabled = true,
         view = 'mini',
       },
-      lsp = {
-        message = {
-          -- Messages shown by lsp servers
-          enabled = true,
-          view = 'mini',
-        },
-      },
       views = {
         -- This sets the position for the search popup that shows up with / or with :
         cmdline_popup = {
@@ -43,6 +49,7 @@ return {
           },
         },
         mini = {
+          winhighlight = {},
           timeout = 5000, -- timeout in milliseconds
           align = 'center',
           position = {
@@ -50,6 +57,9 @@ return {
             row = '95%',
             -- Aligns messages to the far right
             col = '100%',
+          },
+          win_options = {
+            winblend = 0,
           },
         },
       },

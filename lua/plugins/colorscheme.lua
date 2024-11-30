@@ -168,12 +168,12 @@ return {
     priority = 1000,
     config = function()
       require('kanagawa').setup {
-        compile = true, -- enable compiling the colorscheme
+        compile = false, -- enable compiling the colorscheme
         undercurl = true, -- enable undercurls
         commentStyle = { italic = true },
         functionStyle = { bold = false },
         keywordStyle = { italic = true },
-        statementStyle = { bold = false },
+        statementStyle = { bold = true },
         typeStyle = {},
         transparent = true, -- do not set background color
         globalStatus = true,
@@ -185,11 +185,16 @@ return {
               ui = {
                 bg_gutter = 'none',
                 bg_m3 = '#2c3043', -- match lualine
-                fg = '#c0c2d4',
+                fg = '#c0c2d4', -- variable names
               },
+              -- diff = {
+              --   add = '#a490ba',
+              --   delete = '#b08b9f',
+              --   change = '#b299a7',
+              --   text = '#c0c2d4',
+              -- },
               syn = {
                 string = '#84a39a', -- done
-                variable = '#000000', -- done doesnt work
                 number = '#aaabb8', -- done
                 constant = '#caa18d', -- done bools
                 identifier = '#9599be', -- done
@@ -235,21 +240,9 @@ return {
             PmenuSel = { fg = 'none', bg = theme.ui.bg_p2 },
             PmenuSbar = { bg = theme.ui.bg_m1 },
             PmenuThumb = { bg = theme.ui.bg_p2 },
+
             NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
             CursorLine = { bg = '#2c3043', fg = '#acb4c2' }, -- match lualine's nightfly theme
-            -- String = { fg = '#88a79a' },
-            -- Comment = { fg = '#545565' },
-            -- -- Keyword = { fg = '#b4b8d0' },
-            -- Variable = { fg = '#545565' },
-            -- Keyword = { fg = '#545565' },
-            -- Special = { fg = '#545565' },
-            -- Identifier = { fg = '#545565' },
-            -- Parameter = { fg = '#545565' },
-            -- Statement = { fg = '#545565' }, -- For control flow statements like if, else, while, etc.
-            -- Special1 = { fg = '#545565' },
-            -- Special2 = { fg = '#545565' },
-            -- Special3 = { fg = '#545565' },
-            -- Function = { fg = '#545565' },
 
             -- TroubleNormal = { link = 'NormalDark' },
             -- TroubleNormalNC = { link = 'TroubleNormal' },
