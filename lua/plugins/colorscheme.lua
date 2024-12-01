@@ -171,10 +171,10 @@ return {
         compile = false, -- enable compiling the colorscheme
         undercurl = true, -- enable undercurls
         commentStyle = { italic = true },
-        functionStyle = { bold = false },
+        functionStyle = { bold = true },
         keywordStyle = { italic = true },
         statementStyle = { bold = true },
-        typeStyle = {},
+        typeStyle = { bold = false },
         transparent = true, -- do not set background color
         globalStatus = true,
         dimInactive = false, -- dim inactive window `:h hl-NormalNC`
@@ -206,7 +206,8 @@ return {
                 keyword = '#a490ba', -- done keyword class, lambda etc
                 operator = '#5eaeb0', -- done = sign
                 preproc = '#b08b9f', -- done import, from
-                type = '#858fae', -- done modules
+                -- type = '#858fae', -- done modules
+                type = '#b2bbcf', -- done modules
                 regex = '#545565',
                 deprecated = '#545565',
                 comment = '#545565', -- done
@@ -225,13 +226,25 @@ return {
         overrides = function(colors)
           local theme = colors.theme
           return {
+            -- TelescopeNormal
+            -- TelescopeBorder
+            -- TelescopeSelectionCaret
+            -- TelescopeMatching
+            -- TelescopePromptNormal
+            -- TelescopePromptTitle
+            -- TelescopePromptPrefix
+            -- TelescopePromptBorder
+            -- TelescopePreviewTitle
+            -- TelescopePreviewBorder
+            -- TelescopeResultsTitle
+            -- TelescopeResultsBorder
             TelescopeTitle = { fg = theme.ui.special, bold = true },
             TelescopePromptNormal = { bg = 'none' },
-            TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = 'none' },
+            TelescopePromptBorder = { fg = '#54546d', bg = 'none' },
             TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = 'none' },
-            TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = 'none' },
+            TelescopeResultsBorder = { fg = '#54546d', bg = 'none' },
             TelescopePreviewNormal = { bg = 'none' },
-            TelescopePreviewBorder = { fg = theme.ui.bg_dim, bg = 'none' },
+            TelescopePreviewBorder = { fg = '#54546d', bg = 'none' },
             NormalFloat = { bg = 'none' },
             FloatTitle = { bg = 'none' },
             FloatBorder = { bg = 'none' },
