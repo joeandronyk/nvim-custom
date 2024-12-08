@@ -57,6 +57,14 @@ return {
         --  All the info you're looking for is in `:help telescope.setup()`
         --
         defaults = {
+          mappings = {
+            n = {
+              -- Use "d" to close/delete buffers from the list
+              ['d'] = require('telescope.actions').delete_buffer,
+              -- "q" will close the window instead of needing to do esc
+              ['q'] = require('telescope.actions').close,
+            },
+          },
           -- file_ignore_patterns = {
           --   'node_modules',
           --   '.git',
@@ -146,7 +154,8 @@ return {
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find by Grep' })
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find Diagnostics' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = 'Find Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
+      vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal theme=ivy<cr>', { desc = 'Find Buffers' })
+      -- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
       -- vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Find Files' })
       vim.keymap.set('n', '<leader><leader>', ':Telescope find_files hidden=true<CR>', { desc = 'Find Files' })
       -- Slightly advanced example of overriding default behavior and theme
