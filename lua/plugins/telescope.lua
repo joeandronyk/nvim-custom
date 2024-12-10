@@ -116,9 +116,6 @@ return {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
-          persisted = {
-            layout_config = { width = 0.55, height = 0.55 },
-          },
           aerial = {
             -- Set the width of the first two columns (the second
             -- is relevant only when show_columns is set to 'both')
@@ -141,7 +138,6 @@ return {
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
-      pcall(require('telescope').load_extension 'persisted')
       pcall(require('telescope').load_extension 'aerial')
 
       -- See `:help telescope.builtin`
@@ -155,8 +151,6 @@ return {
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find Diagnostics' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = 'Find Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal theme=ivy<cr>', { desc = 'Find Buffers' })
-      -- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
-      -- vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Find Files' })
       vim.keymap.set('n', '<leader><leader>', ':Telescope find_files hidden=true<CR>', { desc = 'Find Files' })
       -- Slightly advanced example of overriding default behavior and theme
       -- vim.keymap.set('n', '<leader>/', function()

@@ -25,7 +25,7 @@ return {
       -- - sr)'  - [S]urround [R]eplace [)] [']
       -- - saa(] - [S]urround [A]add [A]round [(]Brace [[]Paren
       require('mini.surround').setup()
-
+      require('mini.sessions').setup()
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
