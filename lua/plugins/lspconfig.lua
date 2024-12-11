@@ -106,7 +106,17 @@ return {
       end,
       ['pyright'] = function()
         -- configure pyright server (with special settings)
-        lspconfig['pyright'].setup {}
+        lspconfig['pyright'].setup {
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = 'workspace',
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        }
       end,
       -- ['debugpy'] = function()
       --   -- configure debug server (Allows renaming capabilities)
