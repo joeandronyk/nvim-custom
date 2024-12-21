@@ -6,6 +6,7 @@ return {
     { 'antosha417/nvim-lsp-file-operations', config = true },
     { 'folke/neodev.nvim', opts = {} },
     'williamboman/mason.nvim',
+    { 'stevanmilic/nvim-lspimport' },
   },
   config = function()
     -- import lspconfig plugin
@@ -65,6 +66,9 @@ return {
 
         opts.desc = 'Restart LSP'
         keymap.set('n', '<leader>rs', ':LspRestart<CR>', opts) -- mapping to restart lsp if necessary
+
+        opts.desc = 'Import Missing Modules'
+        keymap.set('n', '<leader>ci', require('lspimport').import, opts)
       end,
     })
 
