@@ -13,9 +13,10 @@ return {
       require('venv-selector').setup {
         settings = {
           search = {
-            my_venvs = {
-              command = "fd -H -I python.exe",
-            },
+            cwd = false,
+            -- my_venvs = {
+            --   command = "fd -H -I python.exe",
+            -- },
           },
         },
       }

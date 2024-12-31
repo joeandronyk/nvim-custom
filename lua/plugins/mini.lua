@@ -131,8 +131,8 @@ return {
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
-  vim.keymap.set('n', '<Tab>', function()
-    minifiles_toggle()
-  end),
+  -- vim.keymap.set('n', '<Tab>', function()
+  --   minifiles_toggle()
+  -- end),
 }
 -- vim: ts=2 sts=2 sw=2 et

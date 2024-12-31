@@ -6,6 +6,7 @@ return {
   -- Optional dependencies
   dependencies = { { 'echasnovski/mini.icons', opts = {} } },
   -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  cmd = 'Oil',
   config = function()
     require('oil').setup {
       -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
@@ -38,7 +39,7 @@ return {
       -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
       delete_to_trash = false,
       -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
-      skip_confirm_for_simple_edits = false,
+      skip_confirm_for_simple_edits = true,
       -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
       -- (:help prompt_save_on_select_new_entry)
       prompt_save_on_select_new_entry = true,
@@ -68,22 +69,36 @@ return {
       -- See :help oil-actions for a list of all available actions
       keymaps = {
         ['g?'] = 'actions.show_help',
-        ['<CR>'] = 'actions.select',
+        -- ['<CR>'] = 'actions.select',
         ['<C-s>'] = { 'actions.select', opts = { vertical = true }, desc = 'Open the entry in a vertical split' },
         ['<C-h>'] = { 'actions.select', opts = { horizontal = true }, desc = 'Open the entry in a horizontal split' },
         ['<C-t>'] = { 'actions.select', opts = { tab = true }, desc = 'Open the entry in new tab' },
         ['<C-p>'] = 'actions.preview',
         ['<C-c>'] = 'actions.close',
         ['<C-l>'] = 'actions.refresh',
-        ['-'] = 'actions.parent',
+        ['<C-y>'] = 'actions.yank_entry',
+        -- ['-'] = 'actions.parent',
         ['_'] = 'actions.open_cwd',
         ['`'] = 'actions.cd',
         ['~'] = { 'actions.cd', opts = { scope = 'tab' }, desc = ':tcd to the current oil directory', mode = 'n' },
         ['gs'] = 'actions.change_sort',
         ['gx'] = 'actions.open_external',
-        ['g.'] = 'actions.toggle_hidden',
+        ['H'] = 'actions.toggle_hidden',
         ['g\\'] = 'actions.toggle_trash',
+        ['h'] = 'actions.parent',
+        ['l'] = 'actions.select',
       },
+
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'OilEnter',
+        callback = vim.schedule_wrap(function(args)
+          local oil = require 'oil'
+          if vim.api.nvim_get_current_buf() == args.data.buf and oil.get_cursor_entry() then
+            oil.open_preview()
+          end
+        end),
+      }),
+
       -- Set to false to disable all of the above keymaps
       use_default_keymaps = true,
       view_options = {
@@ -128,8 +143,8 @@ return {
       -- Configuration for the floating window in oil.open_float
       float = {
         -- Padding around the floating window
-        padding = 2,
         max_width = 0,
+        padding = 2,
         max_height = 0,
         border = 'rounded',
         win_options = {
@@ -201,4 +216,7 @@ return {
       },
     }
   end,
+  -- vim.keymap.set('n', '<Tab>', function()
+  --   vim.cmd((vim.bo.filetype == 'oil') and 'bd' or 'Oil --float')
+  -- end),
 }
