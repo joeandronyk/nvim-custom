@@ -78,10 +78,17 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
 
 -- [[ Extra ]]
 vim.keymap.set('n', '<leader>pr', '<CMD> :sp <bar> :term python % <CR>', { desc = 'Run current buffer in python terminal' })
-vim.keymap.set('n', '<leader>pa', '<CMD> :sp <bar> :!hatch run app <CR>', { desc = 'Run App' })
+vim.keymap.set('n', '<leader>pa', '<CMD> :sp <bar> :term hatch run app <CR>', { desc = 'Run App' })
 vim.keymap.set('n', '<leader>e', '<CMD>:!start explorer /select,%:p<CR>', { desc = 'Open In Explorer' })
 -- nnoremap <C-W> :bd!<CR>)
 -- vim: ts=2 sts=2 sw=2 et
 --
 -- [[ Remove Mappings ]]
 vim.keymap.set('n', 's', '<nop>')
+
+-- Automatically close the terminal window when the process exits
+vim.api.nvim_create_autocmd('TermClose', {
+  callback = function()
+    vim.cmd 'close'
+  end,
+})
