@@ -24,6 +24,7 @@ return {
     }
 
     mason_lspconfig.setup {
+      automatic_installation = true,
       lazy = true,
       ensure_installed = {
         'lua_ls',

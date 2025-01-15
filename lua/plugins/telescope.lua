@@ -150,6 +150,7 @@ return {
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find by Grep' })
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find Diagnostics' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = 'Find Recent Files ("." for repeat)' })
+      vim.keymap.set('n', '<leader>fl', builtin.resume, { desc = 'Find Last Results' })
       vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal theme=ivy<cr>', { desc = 'Find Buffers' })
       vim.keymap.set('n', '<leader><leader>', ':Telescope find_files hidden=true<CR>', { desc = 'Find Files' })
       -- Slightly advanced example of overriding default behavior and theme

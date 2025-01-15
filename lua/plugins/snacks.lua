@@ -62,6 +62,7 @@ return {
     words = { enabled = true },
     styles = {
       notification = {
+        relative = 'editor',
         wo = { wrap = true }, -- Wrap notifications
       },
     },
