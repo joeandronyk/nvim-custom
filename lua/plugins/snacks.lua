@@ -7,7 +7,10 @@ return {
     bigfile = { enabled = true },
     dashboard = { enabled = false },
     lazygit = {
+      -- If lazy git is slow, run this command:
+      -- git maintenance run --task=gc
       configure = true,
+      enabled = true,
     },
     notifier = {
       enabled = true,
