@@ -168,6 +168,8 @@ return {
     priority = 1000,
     config = function()
       require('kanagawa').setup {
+        theme = 'wave', -- Load "wave" theme
+        background = 'dark', -- or 'light' for light mode
         compile = false, -- enable compiling the colorscheme
         undercurl = true, -- enable undercurls
         commentStyle = { italic = true },
@@ -258,6 +260,26 @@ return {
             NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
             CursorLine = { bg = '#2c3043', fg = '#acb4c2' }, -- match lualine's nightfly theme
 
+            -- Mini.Statusline Overrides
+            -- MiniStatuslineModeNormal = { fg = '#092236', bg = '#82aaff' },
+            -- MiniStatuslineDevinfo = { fg = '#c3ccdc', bg = '#2c3043' },
+            -- MiniStatuslineFilename = { fg = '#c3ccdc', bg = '#2c3043' },
+            -- MiniStatuslineFileinfo = { fg = '#c3ccdc', bg = '#2c3043' },
+            -- MiniStatuslineModeInsert = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+            -- MiniStatuslineModeVisual = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+            -- * `MiniStatuslineModeVisual` - Visual mode.
+            -- * `MiniStatuslineModeReplace` - Replace mode.
+            -- * `MiniStatuslineModeCommand` - Command mode.
+            -- * `MiniStatuslineModeOther` - other modes (like Terminal, etc.).
+            --
+            -- Highlight used in default statusline:
+            -- * `MiniStatuslineDevinfo` - for "dev info" group
+            --   (|MiniStatusline.section_git| and |MiniStatusline.section_diagnostics|).
+            -- * `MiniStatuslineFilename` - for |MiniStatusline.section_filename| section.
+            -- * `MiniStatuslineFileinfo` - for |MiniStatusline.section_fileinfo| section.
+            --
+            -- Other groups:
+            -- * `MiniStatuslineInactive` - highliting in not focused window.
             -- TroubleNormal = { link = 'NormalDark' },
             -- TroubleNormalNC = { link = 'TroubleNormal' },
             -- NeoTreeNormal = { link = 'NormalDark' },
