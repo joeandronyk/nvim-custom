@@ -5,6 +5,7 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
 
+  event = 'VeryLazy',
   config = function()
     -- import mason
     local mason = require 'mason'

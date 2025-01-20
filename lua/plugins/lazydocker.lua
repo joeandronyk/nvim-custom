@@ -1,17 +1,18 @@
 return {
-  "mgierada/lazydocker.nvim",
-  dependencies = { "akinsho/toggleterm.nvim" },
+  'mgierada/lazydocker.nvim',
+  dependencies = { 'akinsho/toggleterm.nvim' },
   config = function()
-    require("lazydocker").setup({})
+    require('lazydocker').setup {}
   end,
-  event = "BufRead",
+  lazy = true,
+  -- event = 'BufRead',
   keys = {
     {
-      "<leader>ld",
+      '<leader>ld',
       function()
-        require("lazydocker").open()
+        require('lazydocker').open()
       end,
-      desc = "Open Lazydocker floating window",
+      desc = 'Open Lazydocker floating window',
     },
   },
 }

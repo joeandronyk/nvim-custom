@@ -7,6 +7,7 @@ return {
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
+    enabled = false,
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
@@ -21,6 +22,7 @@ return {
   {
     'catppuccin/nvim',
     name = 'catppuccin',
+    enabled = false,
     priority = 1000,
     config = function()
       require('catppuccin').setup {
@@ -78,6 +80,7 @@ return {
   {
     'rose-pine/neovim',
     name = 'rose-pine',
+    enabled = false,
     priority = 1000,
     config = function()
       require('rose-pine').setup {
@@ -165,6 +168,7 @@ return {
   {
     'rebelot/kanagawa.nvim',
     lazy = false,
+    enabled = true,
     priority = 1000,
     config = function()
       require('kanagawa').setup {
@@ -319,6 +323,7 @@ return {
   {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
+    enabled = false,
     -- 'LazyVim/LazyVim',
     -- opts = {
     --   colorscheme = 'gruvbox',
@@ -356,6 +361,7 @@ return {
   {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
+    enabled = false,
     'LazyVim/LazyVim',
     opts = {
       colorscheme = 'gruvbox',
@@ -391,6 +397,7 @@ return {
 
   {
     'mellow-theme/mellow.nvim',
+    enabled = false,
     config = function()
       vim.g.mellow_italic_comments = true
       vim.g.mellow_bold_functions = true

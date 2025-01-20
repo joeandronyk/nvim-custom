@@ -1,6 +1,8 @@
 return {
   'mfussenegger/nvim-dap-python',
   ft = 'python',
+  -- event = 'VeryLazy',
+  lazy = true,
   dependencies = { 'mfussenegger/nvim-dap' },
   keys = {
     { '<leader>db', "<cmd>lua require'dap'.toggle_breakpoint()<cr>", mode = 'n', desc = 'Add Breakpoint' },
