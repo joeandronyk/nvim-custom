@@ -15,12 +15,12 @@ vim.opt.smartindent = true -- Automatically indent new lines
 vim.opt.wrap = true -- Enable line wrapping
 vim.opt.termguicolors = true -- Enable 24-bit RGB colors-
 
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
+
+-- code folding
+vim.o.foldlevel = 99 -- Using ufo provider needs a large value
+vim.o.foldlevelstart = 99
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = true
