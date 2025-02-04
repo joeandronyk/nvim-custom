@@ -30,7 +30,12 @@ return {
         lualine_c = { { 'filename', path = 1 } },
         lualine_x = { 'filetype' },
         lualine_y = { 'progress' },
-        lualine_z = { 'location' },
+        lualine_z = { 'location', {
+          'env_var',
+          fmt = function()
+            return os.getenv 'VIRTUAL_ENV'
+          end,
+        } },
       },
       inactive_sections = {
         lualine_a = {},
