@@ -1,5 +1,7 @@
 return {
   'axkirillov/hbac.nvim',
+  enabled = false,
+  event = 'VeryLazy',
   config = function()
     require('hbac').setup {
       autoclose = true, -- set autoclose to false if you want to close manually

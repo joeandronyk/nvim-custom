@@ -10,6 +10,9 @@ return {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     branch = '0.1.x',
+    keys = {
+      vim.keymap.set('n', '<leader><leader>', ':Telescope find_files hidden=true<CR>', { desc = 'Find Files' }),
+    },
     dependencies = {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -152,7 +155,7 @@ return {
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = 'Find Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>fl', builtin.resume, { desc = 'Find Last Results' })
       vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal theme=ivy<cr>', { desc = 'Find Buffers' })
-      vim.keymap.set('n', '<leader><leader>', ':Telescope find_files hidden=true<CR>', { desc = 'Find Files' })
+      -- vim.keymap.set('n', '<leader><leader>', ':Telescope find_files hidden=true<CR>', { desc = 'Find Files' })
       -- Slightly advanced example of overriding default behavior and theme
       -- vim.keymap.set('n', '<leader>/', function()
       --   -- You can pass additional configuration to Telescope to change the theme, layout, etc.
