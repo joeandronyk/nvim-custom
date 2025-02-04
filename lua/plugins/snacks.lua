@@ -1,6 +1,7 @@
 return {
   'folke/snacks.nvim',
   priority = 1000,
+  enabled = true,
   lazy = false,
   ---@type snacks.Config
   opts = {
@@ -16,6 +17,20 @@ return {
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
+    explorer = {
+      enabled = true,
+    },
+    picker = {
+      layout = {
+        preset = 'telescope',
+      },
+      sources = {
+        explorer = {
+          -- your explorer picker configuration comes here
+          -- or leave it empty to use the default settings
+        },
+      },
+    },
     styles = {
       notification = {
         -- wo = { wrap = true } -- Wrap notifications
@@ -23,6 +38,111 @@ return {
     },
   },
   keys = {
+    {
+      'gt',
+      function()
+        Snacks.picker.lsp_type_definitions()
+      end,
+      desc = 'LSP Type Definitions',
+    },
+    {
+      'gi',
+      function()
+        Snacks.picker.lsp_implementations()
+      end,
+      desc = 'LSP Implementations',
+    },
+    {
+      'gD',
+      function()
+        Snacks.picker.lsp_declarations()
+      end,
+      desc = 'LSP Declarations',
+    },
+    {
+      'gd',
+      function()
+        Snacks.picker.lsp_definitions()
+      end,
+      desc = 'LSP Definitions',
+    },
+    {
+      'gr',
+      function()
+        Snacks.picker.lsp_references()
+      end,
+      desc = 'LSP References',
+    },
+    {
+      '<leader>gb',
+      function()
+        Snacks.picker.git_branches()
+      end,
+      desc = 'Git Branches',
+    },
+    {
+      '<leader>fd',
+      function()
+        Snacks.picker.diagnostics()
+      end,
+      desc = 'Find Diagnostics',
+    },
+    {
+      '<leader>fr',
+      function()
+        Snacks.picker.registers()
+      end,
+      desc = 'Find Registers',
+    },
+    {
+      '<leader>fs',
+      function()
+        Snacks.picker.lsp_symbols()
+      end,
+      desc = 'Find Symbols',
+    },
+    {
+      '<leader>fl',
+      function()
+        Snacks.picker.resume()
+      end,
+      desc = 'Find Last',
+    },
+    {
+      '<leader>fb',
+      function()
+        Snacks.picker.buffers()
+      end,
+      desc = 'Find Buffers',
+    },
+    {
+      '<leader>fg',
+      function()
+        Snacks.picker.grep()
+      end,
+      desc = 'Find by Grep',
+    },
+    {
+      '<leader>fw',
+      function()
+        Snacks.picker.grep_word()
+      end,
+      desc = 'Find Word',
+    },
+    {
+      '<leader><leader>',
+      function()
+        Snacks.picker.files()
+      end,
+      desc = 'Find Files',
+    },
+    {
+      '<leader>e',
+      function()
+        Snacks.explorer()
+      end,
+      desc = 'Toggle Explorer',
+    },
     {
       '<leader>z',
       function()
@@ -80,13 +200,13 @@ return {
       desc = 'Git Browse',
       mode = { 'n', 'v' },
     },
-    {
-      '<leader>gb',
-      function()
-        Snacks.git.blame_line()
-      end,
-      desc = 'Git Blame Line',
-    },
+    -- {
+    --   '<leader>gb',
+    --   function()
+    --     Snacks.git.blame_line()
+    --   end,
+    --   desc = 'Git Blame Line',
+    -- },
     {
       '<leader>gf',
       function()

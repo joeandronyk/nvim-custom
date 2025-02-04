@@ -244,13 +244,13 @@ return {
             -- TelescopePreviewBorder
             -- TelescopeResultsTitle
             -- TelescopeResultsBorder
-            TelescopeTitle = { fg = theme.ui.special, bold = true },
-            TelescopePromptNormal = { bg = 'none' },
-            TelescopePromptBorder = { fg = '#54546d', bg = 'none' },
-            TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = 'none' },
-            TelescopeResultsBorder = { fg = '#54546d', bg = 'none' },
-            TelescopePreviewNormal = { bg = 'none' },
-            TelescopePreviewBorder = { fg = '#54546d', bg = 'none' },
+            -- TelescopeTitle = { fg = theme.ui.special, bold = true },
+            -- TelescopePromptNormal = { bg = 'none' },
+            -- TelescopePromptBorder = { fg = '#54546d', bg = 'none' },
+            -- TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = 'none' },
+            -- TelescopeResultsBorder = { fg = '#54546d', bg = 'none' },
+            -- TelescopePreviewNormal = { bg = 'none' },
+            -- TelescopePreviewBorder = { fg = '#54546d', bg = 'none' },
             NormalFloat = { bg = 'none' },
             FloatTitle = { bg = 'none' },
             FloatBorder = { bg = 'none' },

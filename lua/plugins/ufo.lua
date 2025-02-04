@@ -1,8 +1,6 @@
 return {
   'kevinhwang91/nvim-ufo',
   lazy = false,
-  -- Even though the plugin is disabled it works...
-  -- If i remove this entire plugin it stops working.  No idea why.
   enabled = true,
   dependencies = 'kevinhwang91/promise-async',
   config = function()
@@ -24,8 +22,8 @@ return {
 
     require('ufo').setup {
       provider_selector = function(bufnr, filetype, buftype)
-        return { 'lsp', 'indent' }
-        -- return { 'treesitter', 'indent' }
+        -- return { 'lsp', 'indent' }
+        return { 'treesitter', 'indent' }
       end,
     }
   end,
