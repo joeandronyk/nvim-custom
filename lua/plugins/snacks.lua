@@ -25,7 +25,20 @@ return {
         preset = 'telescope',
       },
       sources = {
+        files = {
+          hidden = true,
+          follow = true,
+          git_icons = true,
+          list = {
+            { name = 'Files', cmd = 'fd --type f --hidden --follow --exclude .git' },
+            -- { name = 'Git Files', cmd = 'git ls-files' },
+            -- { name = 'All Files', cmd = 'fd --type f --hidden --follow' },
+          },
+        },
+
         explorer = {
+          hidden = true,
+          -- dotfiles = true,
           -- your explorer picker configuration comes here
           -- or leave it empty to use the default settings
         },
