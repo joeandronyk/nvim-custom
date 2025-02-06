@@ -27,15 +27,15 @@ return {
       sources = {
         grep_word = {
           hidden = true,
-          ignored = true,
+          -- ignored = true,
         },
         grep = {
           hidden = true,
-          ignored = true,
+          -- ignored = true,
         },
         files = {
           hidden = true,
-          ignored = true,
+          -- ignored = true,
           -- follow = true,
           -- git_icons = true,
           -- list = {
