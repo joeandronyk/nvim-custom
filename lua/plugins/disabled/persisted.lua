@@ -2,7 +2,7 @@ return {
   {
     'olimorris/persisted.nvim',
 
-    vim.keymap.set('n', '<leader>fs', ':Telescope persisted<CR>', { desc = 'Find Session' }),
+    -- vim.keymap.set('n', '<leader>fs', ':Telescope persisted<CR>', { desc = 'Find Session' }),
 
     lazy = false, -- make sure the plugin is always loaded at startup
     config = function()
