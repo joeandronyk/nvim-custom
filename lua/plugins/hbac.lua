@@ -1,6 +1,6 @@
 return {
   'axkirillov/hbac.nvim',
-  enabled = false,
+  enabled = true,
   event = 'VeryLazy',
   config = function()
     require('hbac').setup {
@@ -10,9 +10,9 @@ return {
         vim.api.nvim_buf_delete(bufnr, {})
       end,
       close_buffers_with_windows = false, -- hbac will close buffers with associated windows if this option is `true`
-      telescope = {
-        -- See #telescope-configuration below
-      },
+      -- telescope = {
+      --   -- See #telescope-configuration below
+      -- },
     }
   end,
 }
