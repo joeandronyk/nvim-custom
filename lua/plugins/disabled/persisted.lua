@@ -2,7 +2,7 @@ return {
   {
     'olimorris/persisted.nvim',
 
-    vim.keymap.set('n', '<leader>fs', ':Telescope persisted<CR>', { desc = 'Find Session' }),
+    -- vim.keymap.set('n', '<leader>fs', ':Telescope persisted<CR>', { desc = 'Find Session' }),
 
     lazy = false, -- make sure the plugin is always loaded at startup
     config = function()
@@ -27,18 +27,18 @@ return {
         allowed_dirs = {}, -- Table of dirs that the plugin will start and autoload from
         ignored_dirs = {}, -- Table of dirs that are ignored for starting and autoloading
 
-        telescope = {
-          mappings = { -- Mappings for managing sessions in Telescope
-            copy_session = '<C-c>',
-            change_branch = '<C-b>',
-            delete_session = '<C-d>',
-          },
-          icons = { -- icons displayed in the Telescope picker
-            selected = ' ',
-            dir = '  ',
-            branch = ' ',
-          },
-        },
+        -- telescope = {
+        --   mappings = { -- Mappings for managing sessions in Telescope
+        --     copy_session = '<C-c>',
+        --     change_branch = '<C-b>',
+        --     delete_session = '<C-d>',
+        --   },
+        --   icons = { -- icons displayed in the Telescope picker
+        --     selected = ' ',
+        --     dir = '  ',
+        --     branch = ' ',
+        --   },
+        -- },
       }
     end,
   },

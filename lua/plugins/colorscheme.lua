@@ -3,8 +3,6 @@ return {
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     enabled = false,
@@ -232,25 +230,6 @@ return {
         overrides = function(colors)
           local theme = colors.theme
           return {
-            -- TelescopeNormal
-            -- TelescopeBorder
-            -- TelescopeSelectionCaret
-            -- TelescopeMatching
-            -- TelescopePromptNormal
-            -- TelescopePromptTitle
-            -- TelescopePromptPrefix
-            -- TelescopePromptBorder
-            -- TelescopePreviewTitle
-            -- TelescopePreviewBorder
-            -- TelescopeResultsTitle
-            -- TelescopeResultsBorder
-            TelescopeTitle = { fg = theme.ui.special, bold = true },
-            TelescopePromptNormal = { bg = 'none' },
-            TelescopePromptBorder = { fg = '#54546d', bg = 'none' },
-            TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = 'none' },
-            TelescopeResultsBorder = { fg = '#54546d', bg = 'none' },
-            TelescopePreviewNormal = { bg = 'none' },
-            TelescopePreviewBorder = { fg = '#54546d', bg = 'none' },
             NormalFloat = { bg = 'none' },
             FloatTitle = { bg = 'none' },
             FloatBorder = { bg = 'none' },
