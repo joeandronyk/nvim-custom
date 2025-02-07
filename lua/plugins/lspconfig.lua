@@ -114,6 +114,7 @@ return {
                 ['https://raw.githubusercontent.com/kedro-org/kedro/develop/static/jsonschema/kedro-catalog-0.17.json'] = 'conf/**/*catalog*',
                 ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
                 ['https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json'] = './.gitlab-ci.yml',
+                ["https://json.schemastore.org/pyproject.json"] = "pyproject.toml",
               },
             },
           },
