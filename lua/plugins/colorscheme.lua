@@ -206,7 +206,7 @@ return {
                 parameter = '#d2978a', -- done
 
                 fun = '#7a97c6', -- done
-                statement = '#000000', -- NOT SURE
+                statement = '#aaabb8', -- anchors and aliases in yaml
                 keyword = '#a490ba', -- done keyword class, lambda etc
                 operator = '#5eaeb0', -- done = sign
                 preproc = '#b08b9f', -- done import, from
