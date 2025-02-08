@@ -2,7 +2,7 @@ return {
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     lazy = true,
-    enabled = true,
+    enabled = false,
     dependencies = {
       { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
       { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
