@@ -1,12 +1,13 @@
 -- Automatically close the terminal window when the process exits sucessfully
-vim.api.nvim_create_autocmd('TermClose', {
-  callback = function()
-    if vim.v.event.status == 0 then
-      vim.cmd 'close'
-    end
-  end,
-})
-
+-- This is causing a flicker with Explorer in Snacks.  Disabling for now.
+-- vim.api.nvim_create_autocmd('TermClose', {
+--   callback = function()
+--     if vim.v.event.status == 0 then
+--       vim.cmd 'close'
+--     end
+--   end,
+-- })
+--
 vim.api.nvim_create_user_command('RuffCheck', function()
   -- Run Ruff and capture the output
   local output = vim.fn.systemlist 'ruff check .'
