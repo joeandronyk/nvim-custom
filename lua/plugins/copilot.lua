@@ -3,7 +3,6 @@ return {
   enabled = false,
   cmd = 'Copilot',
   event = 'InsertEnter',
-  enabled = true,
   config = function()
     require('copilot').setup {
       panel = {
