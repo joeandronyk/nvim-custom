@@ -81,5 +81,4 @@ vim.opt.titlestring = [[%{substitute(getcwd(),'^.*\\','','')}]]
 
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions'
 
-vim.o.shell = 'pwsh.exe'
 -- vim: ts=2 sts=2 sw=2 et
