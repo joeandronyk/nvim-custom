@@ -85,3 +85,9 @@ vim.keymap.set('n', '<leader>e', '<CMD>:!start explorer /select,%:p<CR>', { desc
 --
 -- [[ Remove Mappings ]]
 vim.keymap.set('n', 's', '<nop>')
+
+-- Set makeprg to run pre-commit
+vim.opt.makeprg = 'pre-commit run --all-files'
+
+-- Create a keybinding to run :make and open the quickfix list
+vim.api.nvim_set_keymap('n', '<leader>pc', ':make<CR>:copen<CR>', { noremap = true, silent = true })

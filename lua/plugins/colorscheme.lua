@@ -242,7 +242,9 @@ return {
 
             NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
             CursorLine = { bg = '#2c3043', fg = '#acb4c2' }, -- match lualine's nightfly theme
-
+            GitSignsAdd = { fg = '#549159' },
+            GitSignsChange = { fg = '#375fad' },
+            GitSignsDelete = { fg = '#c34043' },
             -- Mini.Statusline Overrides
             -- MiniStatuslineModeNormal = { fg = '#092236', bg = '#82aaff' },
             -- MiniStatuslineDevinfo = { fg = '#c3ccdc', bg = '#2c3043' },

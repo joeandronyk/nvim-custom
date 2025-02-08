@@ -30,6 +30,7 @@ return {
         changedelete = { text = '~' },
         untracked = { text = '┆' },
       },
+
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 
