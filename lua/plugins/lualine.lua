@@ -30,23 +30,12 @@ return {
         lualine_c = { { 'filename', path = 1 } },
         lualine_x = { 'filetype' },
         lualine_y = { 'progress' },
-        lualine_z = {
-          'location',
-          {
-            'env_var',
-            fmt = function()
-              local virtual_env = os.getenv 'VIRTUAL_ENV'
-              print(virtual_env)
-              print(vim.fn.getcwd())
-              if virtual_env then
-                local cleaned_virtual_env = virtual_env:gsub('\\', '/')
-                return cleaned_virtual_env:gsub('^' .. vim.fn.getcwd() .. '/', '')
-              else
-                return ''
-              end
-            end,
-          },
-        },
+        lualine_z = { 'location', {
+          'env_var',
+          fmt = function()
+            return os.getenv 'VIRTUAL_ENV'
+          end,
+        } },
       },
       inactive_sections = {
         lualine_a = {},
