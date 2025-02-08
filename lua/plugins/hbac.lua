@@ -9,10 +9,7 @@ return {
       close_command = function(bufnr)
         vim.api.nvim_buf_delete(bufnr, {})
       end,
-      close_buffers_with_windows = true, -- hbac will close buffers with associated windows if this option is `true`
-      telescope = {
-        -- See #telescope-configuration below
-      },
+      close_buffers_with_windows = false, -- hbac will close buffers with associated windows if this option is `true`
     }
   end,
 }

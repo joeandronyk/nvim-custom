@@ -5,7 +5,6 @@ return {
       'neovim/nvim-lspconfig',
       'mfussenegger/nvim-dap',
       'mfussenegger/nvim-dap-python', --optional
-      -- { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
     },
     event = 'VimEnter',
     branch = 'regexp', -- This is the regexp branch, use this for the new version
@@ -30,12 +29,6 @@ return {
             search_timeout = 5, -- if a search takes longer than this many seconds, stop it and alert the user
             debug = false, -- enables you to run the VenvSelectLog command to view debug logs
             require_lsp_activation = true, -- require activation of an lsp before setting env variables
-
-            -- telescope viewer options
-            -- on_telescope_result_callback = nil, -- callback function for modifying telescope results
-            -- show_telescope_search_type = true, -- shows which of the searches found which venv in telescope
-            -- telescope_filter_type = 'substring', -- when you type something in telescope, filter by "substring" or "character"
-            -- telescope_active_venv_color = '#00FF00', -- The color of the active venv in telescope
           },
         },
       }
