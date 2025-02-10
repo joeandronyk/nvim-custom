@@ -34,7 +34,8 @@ return {
         lualine_y = {
           {
             'env_var',
-            color = { bg = '#b8c1d0', fg = '#39496c' },
+            -- color = { bg = '#b8c1d0', fg = '#39496c' },
+            color = { bg = '#39496c', fg = '#b8c1d0' },
             fmt = function()
               local virtual_env = os.getenv 'VIRTUAL_ENV'
               if virtual_env then
@@ -50,7 +51,7 @@ return {
           },
         },
         lualine_z = {
-          { 'progress', color = { bg = '#39496c', fg = '#b8c1d0' } },
+          { 'progress', color = { bg = '#506799', fg = '#c3ccdc' } },
           { 'location', separator = { left = '', right = '' } },
         },
       },
