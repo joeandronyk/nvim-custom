@@ -31,12 +31,10 @@ return {
         lualine_b = { { 'branch', color = { bg = '#39496c', fg = '#b8c1d0' }, separator = { left = '', right = '' } } },
         lualine_c = { { 'filename', path = 1 } },
         lualine_x = { 'filetype' },
-        lualine_y = { { 'progress', color = { bg = '#39496c', fg = '#b8c1d0' } } },
-        lualine_z = {
-          { 'location', separator = { left = '', right = '' } },
+        lualine_y = {
           {
             'env_var',
-            color = { bg = '#39496c', fg = '#b8c1d0' },
+            color = { bg = '#b8c1d0', fg = '#39496c' },
             fmt = function()
               local virtual_env = os.getenv 'VIRTUAL_ENV'
               if virtual_env then
@@ -50,6 +48,10 @@ return {
             end,
             separator = { left = '', right = '' },
           },
+        },
+        lualine_z = {
+          { 'progress', color = { bg = '#39496c', fg = '#b8c1d0' } },
+          { 'location', separator = { left = '', right = '' } },
         },
       },
       inactive_sections = {
