@@ -6,6 +6,7 @@ return {
     { 'antosha417/nvim-lsp-file-operations', config = true },
     { 'folke/neodev.nvim', opts = {} },
     'williamboman/mason.nvim',
+    'nvim-lua/plenary.nvim',
     { 'stevanmilic/nvim-lspimport' },
   },
   config = function()
