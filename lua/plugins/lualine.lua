@@ -47,12 +47,12 @@ return {
                 return ''
               end
             end,
-            separator = { left = '', right = '' },
+            separator = { left = '', right = '' },
           },
         },
         lualine_z = {
-          { 'progress', color = { bg = '#506799', fg = '#c3ccdc' } },
-          { 'location', separator = { left = '', right = '' } },
+          { 'progress', color = { bg = '#506799', fg = '#c3ccdc' }, separator = { left = '', right = '' } },
+          { 'location', separator = { left = '', right = '' } },
         },
       },
       inactive_sections = {
