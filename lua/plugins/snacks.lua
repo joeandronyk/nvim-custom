@@ -6,6 +6,7 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
+    image = { enabled = false },
     terminal = { enabled = true, shell = 'pwsh' },
     dashboard = {
       enabled = false,
@@ -92,43 +93,158 @@ return {
       timeout = 3000,
     },
     quickfile = { enabled = true },
-    scroll = { enabled = true },
+    scroll = { enabled = false },
     statuscolumn = { enabled = true },
     words = { enabled = true },
     explorer = {
       enabled = true,
+      -- finder = 'explorer',
+      -- sort = { fields = { 'sort' } },
+      -- supports_live = true,
+      -- tree = false,
+      -- watch = false,
+      -- diagnostics = false,
+      -- diagnostics_open = false,
+      -- git_status = false,
+      -- git_status_open = false,
+      -- git_untracked = true,
+      -- follow_file = false,
+      -- focus = 'list',
+      -- auto_close = false,
+      -- jump = { close = false },
+      -- layout = { preset = 'sidebar', preview = true },
+      -- -- to show the explorer to the right, add the below to
+      -- -- your config under `opts.picker.sources.explorer`
+      -- -- layout = { layout = { position = "right" } },
+      -- formatters = {
+      --   file = { filename_only = true },
+      --   severity = { pos = 'right' },
+      -- },
+      -- matcher = { sort_empty = false, fuzzy = false },
+      -- config = function(opts)
+      --   return require('snacks.picker.source.explorer').setup(opts)
+      -- end,
+      -- win = {
+      --   list = {
+      --     keys = {
+      --       ['<BS>'] = 'explorer_up',
+      --       ['l'] = 'confirm',
+      --       ['h'] = 'explorer_close', -- close directory
+      --       ['a'] = 'explorer_add',
+      --       ['d'] = 'explorer_del',
+      --       ['r'] = 'explorer_rename',
+      --       ['c'] = 'explorer_copy',
+      --       ['m'] = 'explorer_move',
+      --       ['o'] = 'explorer_open', -- open with system application
+      --       ['P'] = 'toggle_preview',
+      --       ['y'] = 'explorer_yank',
+      --       ['u'] = 'explorer_update',
+      --       ['<c-c>'] = 'tcd',
+      --       ['<leader>/'] = 'picker_grep',
+      --       ['<c-t>'] = 'terminal',
+      --       ['.'] = 'explorer_focus',
+      --       ['I'] = 'toggle_ignored',
+      --       ['H'] = 'toggle_hidden',
+      --       ['Z'] = 'explorer_close_all',
+      --       [']g'] = 'explorer_git_next',
+      --       ['[g'] = 'explorer_git_prev',
+      --       [']d'] = 'explorer_diagnostic_next',
+      --       ['[d'] = 'explorer_diagnostic_prev',
+      --       [']w'] = 'explorer_warn_next',
+      --       ['[w'] = 'explorer_warn_prev',
+      --       [']e'] = 'explorer_error_next',
+      --       ['[e'] = 'explorer_error_prev',
+      --     },
+      --   },
+      -- },
+    },
+    animate = {
+      fps = 30,
     },
     picker = {
       layout = {
         preset = 'telescope',
       },
       sources = {
-        grep_word = {
+        -- registers = {
+        --
+        -- },
+        files = {
           hidden = true,
-          -- ignored = true,
+          actions = {
+            switch_to_grep = function(picker, _)
+              local snacks = require 'snacks'
+              local pattern = picker.input.filter.pattern or picker.input.filter.search
+              local cwd = picker.input.filter.cwd
+
+              picker:close()
+
+              ---@diagnostic disable-next-line: missing-fields
+              snacks.picker.grep { cwd = cwd, search = pattern }
+            end,
+          },
+          win = {
+            input = {
+              keys = {
+                ['<a-s>'] = { 'switch_to_grep', desc = 'Switch to grep', mode = { 'i', 'n' } },
+              },
+            },
+          },
         },
         grep = {
           hidden = true,
-          -- ignored = true,
-        },
-        files = {
-          hidden = true,
-          -- ignored = true,
-          -- follow = true,
-          -- git_icons = true,
-          -- list = {
-          --   { name = 'Files', cmd = 'fd --type f --hidden --follow --exclude .git' },
-          --   -- { name = 'Git Files', cmd = 'git ls-files' },
-          --   -- { name = 'All Files', cmd = 'fd --type f --hidden --follow' },
-          -- },
-        },
+          actions = {
 
-        explorer = {
+            switch_to_files = function(picker, _)
+              local snacks = require 'snacks'
+              local pattern = picker.input.filter.search or picker.input.filter.pattern
+              local cwd = picker.input.filter.cwd
+
+              picker:close()
+
+              ---@diagnostic disable-next-line: missing-fields
+              snacks.picker.files { cwd = cwd, pattern = pattern }
+            end,
+          },
+          win = {
+            input = {
+              keys = {
+                ['<a-s>'] = { 'switch_to_files', desc = 'Switch to files', mode = { 'i', 'n' } },
+              },
+            },
+          },
+        },
+        word = {
           hidden = true,
-          -- your explorer picker configuration comes here
-          -- or leave it empty to use the default settings
         },
       },
+      -- sources = {
+      --   grep_word = {
+      --     hidden = true,
+      --     -- ignored = true,
+      --   },
+      --   grep = {
+      --     hidden = true,
+      --     -- ignored = true,
+      --   },
+      --   files = {
+      --     hidden = true,
+      --     -- ignored = true,
+      --     -- follow = true,
+      --     -- git_icons = true,
+      --     -- list = {
+      --     --   { name = 'Files', cmd = 'fd --type f --hidden --follow --exclude .git' },
+      --     --   -- { name = 'Git Files', cmd = 'git ls-files' },
+      --     --   -- { name = 'All Files', cmd = 'fd --type f --hidden --follow' },
+      --     -- },
+      --   },
+      --
+      --   explorer = {
+      --     hidden = true,
+      --     -- your explorer picker configuration comes here
+      --     -- or leave it empty to use the default settings
+      --   },
+      -- },
     },
     -- styles = {
     --   notification = {
@@ -187,9 +303,14 @@ return {
       desc = 'Find Diagnostics',
     },
     {
-      '<leader>fr',
+      '"', -- use the normal registers key command
       function()
-        Snacks.picker.registers()
+        -- Snacks.picker.registers()
+        Snacks.picker.registers {
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+        }
       end,
       desc = 'Find Registers',
     },
@@ -284,13 +405,13 @@ return {
       end,
       desc = 'Delete Buffer',
     },
-    {
-      '<leader>cR',
-      function()
-        Snacks.rename.rename_file()
-      end,
-      desc = 'Rename File',
-    },
+    -- {
+    --   '<leader>cR',
+    --   function()
+    --     Snacks.rename.rename_file()
+    --   end,
+    --   desc = 'Rename File',
+    -- },
     {
       '<leader>gB',
       function()
@@ -364,24 +485,24 @@ return {
       desc = 'Prev Reference',
       mode = { 'n', 't' },
     },
-    {
-      '<leader>N',
-      desc = 'Neovim News',
-      function()
-        Snacks.win {
-          file = vim.api.nvim_get_runtime_file('doc/news.txt', false)[1],
-          width = 0.6,
-          height = 0.6,
-          wo = {
-            spell = false,
-            wrap = false,
-            signcolumn = 'yes',
-            statuscolumn = ' ',
-            conceallevel = 3,
-          },
-        }
-      end,
-    },
+    -- {
+    --   '<leader>N',
+    --   desc = 'Neovim News',
+    --   function()
+    --     Snacks.win {
+    --       file = vim.api.nvim_get_runtime_file('doc/news.txt', false)[1],
+    --       width = 0.6,
+    --       height = 0.6,
+    --       wo = {
+    --         spell = false,
+    --         wrap = false,
+    --         signcolumn = 'yes',
+    --         statuscolumn = ' ',
+    --         conceallevel = 3,
+    --       },
+    --     }
+    --   end,
+    -- },
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {
