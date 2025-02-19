@@ -18,13 +18,15 @@ return {
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
+      require('which-key').setup {
+        preset = 'modern',
+      }
 
       -- Document existing key chains
       require('which-key').add {
         { '<leader>b', group = 'Buffer' },
         { '<leader>c', group = 'Code' },
-        { '<leader>d', group = 'Debugging' },
+        -- { '<leader>d', group = 'Debugging' },
         { '<leader>f', group = 'Find' },
         { '<leader>g', group = 'Git' },
         { '<leader>h', group = 'Harpoon' },

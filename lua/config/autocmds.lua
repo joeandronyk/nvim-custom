@@ -1,12 +1,11 @@
--- Automatically close the terminal window when the process exits sucessfully
--- This is causing a flicker with Explorer in Snacks.  Disabling for now.
--- vim.api.nvim_create_autocmd('TermClose', {
---   callback = function()
---     if vim.v.event.status == 0 then
---       vim.cmd 'close'
---     end
---   end,
--- })
+-- [[AutoLoad Session in Persistence]]
+vim.api.nvim_create_autocmd('VimEnter', {
+  desc = 'Auto load Persistence session',
+  group = vim.api.nvim_create_augroup('persistence_group', { clear = true }),
+  callback = function()
+    require('persistence').load()
+  end,
+})
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode

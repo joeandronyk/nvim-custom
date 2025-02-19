@@ -1,6 +1,9 @@
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 vim.keymap.set('i', 'jj', '<ESC>', { silent = true })
+--
+-- Keymap to switch to the previous buffer
+vim.api.nvim_set_keymap('n', '<leader>bb', ':b#<CR>', { noremap = true, silent = true })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
