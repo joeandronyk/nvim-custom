@@ -129,25 +129,51 @@ return {
               return
             end
             table.sort(options)
-            vim.ui.select(options, {
-              prompt = "Choose to copy to clipboard:",
-              format_item = function(item) return ("%s: %s"):format(item, vals[item]) end,
-            },
-            function(choice)
-              local result = vals[choice]
-              if result then
-                vim.notify(("Copied: `%s`"):format(result))
-                vim.fn.setreg("+", result)
-              end
-            end)
+
+            local lines = {}
+            for _, option in ipairs(options) do
+              table.insert(lines, ("%s: %s"):format(option, vals[option]))
+            end
+
+            local win = require('snacks.win')({
+              width = 0.5,
+              height = 0.3,
+              row = 0.3,
+              col = 0.3,
+              border = "rounded",
+              title = "Choose to copy to clipboard",
+              minimal = true,
+              enter = true,
+              wo = {
+                wrap = false,
+                cursorline = true,
+                winhighlight = "Normal:SnacksNormal,NormalNC:SnacksNormalNC",
+              },
+              keys = {
+                q = "close",  -- Close window on pressing 'q'
+                ["<CR>"] = function(self)
+                  local choice = vim.fn.line(".")
+                  local key = options[choice]
+                  local result = vals[key]
+                  if result then
+                    vim.notify(("Copied: `%s`"):format(result))
+                    vim.fn.setreg("+", result)
+                  end
+                  self:close()
+                end,
+              },
+              text = lines,
+            })
+
+            win:show()
           end,
-          find_in_dir = function(state)
-            local node = state.tree:get_node()
-            local path = node:get_id()
-            require("telescope.builtin").find_files {
-              cwd = node.type == "directory" and path or vim.fn.fnamemodify(path, ":h"),
-            }
-          end,
+        find_in_dir = function(state)
+          local node = state.tree:get_node()
+          local path = node:get_id()
+          require("telescope.builtin").find_files {
+            cwd = node.type == "directory" and path or vim.fn.fnamemodify(path, ":h"),
+          }
+        end
         },
         window = {
           position = 'left',
