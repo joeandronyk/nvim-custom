@@ -97,7 +97,7 @@ return {
     statuscolumn = { enabled = true },
     words = { enabled = true },
     explorer = {
-      enabled = true,
+      enabled = false,
       -- finder = 'explorer',
       -- sort = { fields = { 'sort' } },
       -- supports_live = true,
