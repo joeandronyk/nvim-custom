@@ -8,6 +8,7 @@ return {
     bigfile = { enabled = true },
     image = { enabled = false },
     terminal = { enabled = true, shell = 'pwsh' },
+    scope = { enabled = true },
     dashboard = {
       enabled = false,
       sections = {
@@ -166,9 +167,15 @@ return {
         preset = 'telescope',
       },
       sources = {
-        -- registers = {
-        --
-        -- },
+        registers = {
+          win = {
+            input = {
+              keys = {
+                ['"'] = { '', desc = 'Show registers', mode = { 'n' } },
+              },
+            },
+          },
+        },
         files = {
           hidden = true,
           actions = {
