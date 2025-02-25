@@ -6,4 +6,6 @@ return {
     -- 'ibhagwan/fzf-lua',
     -- 'echasnovski/mini.pick',
   },
+  -- Use LivePreview start and LivePreview close
+  cmd = { 'LivePreview', 'LivePreviewStop', 'LivePreviewToggle' },
 }
