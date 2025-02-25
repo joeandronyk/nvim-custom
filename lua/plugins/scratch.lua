@@ -9,7 +9,7 @@ return {
   vim.keymap.set('n', '<leader>so', '<cmd>ScratchOpen<cr>', { desc = 'Open Scratch File' }),
   config = function()
     require('scratch').setup {
-      scratch_file_dir = vim.fn.stdpath 'cache' .. '/scratch.nvim', -- where your scratch files will be put
+      scratch_file_dir = vim.fn.stdpath 'data' .. '/scratches', -- where your scratch files will be put
       window_cmd = 'vsplit', -- 'vsplit' | 'split' | 'edit' | 'tabedit' | 'rightbelow vsplit'
       use_telescope = false,
       -- fzf-lua is recommanded, since it will order the files by modification datetime desc. (require rg)
@@ -17,9 +17,7 @@ return {
       filetypes = { 'lua', 'sh', 'py', 'md' }, -- you can simply put filetype here
       filetype_details = { -- or, you can have more control here
         json = {}, -- empty table is fine
-        ['md'] = {
-          subdir = 'project-name', -- group scratch files under specific sub folder
-        },
+        ['md'] = {},
         ['yaml'] = {},
         ['py'] = {},
       },
