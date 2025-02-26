@@ -101,7 +101,7 @@ return {
       timeout = 3000,
     },
     quickfile = { enabled = true },
-    scroll = { enabled = false },
+    -- scroll = { enabled = true }, -- this makes scrolling slow and choppy
     statuscolumn = { enabled = true },
     words = { enabled = true },
     animate = {
@@ -303,7 +303,7 @@ return {
       '<leader>fp',
       function()
         require('persistence').save()
-        vim.cmd '%bd'
+        vim.cmd '%bd!'
         Snacks.picker.projects {
           on_show = function()
             vim.cmd.stopinsert()

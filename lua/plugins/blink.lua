@@ -19,10 +19,10 @@ return {
     -- See the full "keymap" documentation for information on defining your own keymap.
     cmdline = {
       keymap = {
-        ['<C-k>'] = { 'select_prev', 'fallback' },
-        ['<C-j>'] = { 'select_next', 'fallback' },
-        ['<Tab>'] = { 'accept', 'fallback' },
-        ['<CR>'] = { 'accept_and_enter', 'fallback' },
+        -- ['<C-k>'] = { 'select_prev', 'fallback' },
+        -- ['<C-j>'] = { 'select_next', 'fallback' },
+        -- ['<Tab>'] = { 'accept', 'fallback' },
+        -- ['<CR>'] = { 'accept_and_enter', 'fallback' },
       },
     },
     keymap = {
