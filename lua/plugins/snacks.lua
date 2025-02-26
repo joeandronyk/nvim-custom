@@ -5,6 +5,13 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    lazygit = {
+      config = {
+        os = {
+          edit = '[ -z ""$NVIM"" ] && (nvim -- {{filename}}) || (nvim --server ""$NVIM"" --remote-send ""q"" && nvim --server ""$NVIM"" --remote {{filename}})',
+        },
+      },
+    },
     bigfile = { enabled = true },
     image = { enabled = false },
     terminal = { enabled = true, shell = 'pwsh' },
@@ -97,68 +104,6 @@ return {
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
     words = { enabled = true },
-    explorer = {
-      enabled = false,
-      -- finder = 'explorer',
-      -- sort = { fields = { 'sort' } },
-      -- supports_live = true,
-      -- tree = false,
-      -- watch = false,
-      -- diagnostics = false,
-      -- diagnostics_open = false,
-      -- git_status = false,
-      -- git_status_open = false,
-      -- git_untracked = true,
-      -- follow_file = false,
-      -- focus = 'list',
-      -- auto_close = false,
-      -- jump = { close = false },
-      -- layout = { preset = 'sidebar', preview = true },
-      -- -- to show the explorer to the right, add the below to
-      -- -- your config under `opts.picker.sources.explorer`
-      -- -- layout = { layout = { position = "right" } },
-      -- formatters = {
-      --   file = { filename_only = true },
-      --   severity = { pos = 'right' },
-      -- },
-      -- matcher = { sort_empty = false, fuzzy = false },
-      -- config = function(opts)
-      --   return require('snacks.picker.source.explorer').setup(opts)
-      -- end,
-      -- win = {
-      --   list = {
-      --     keys = {
-      --       ['<BS>'] = 'explorer_up',
-      --       ['l'] = 'confirm',
-      --       ['h'] = 'explorer_close', -- close directory
-      --       ['a'] = 'explorer_add',
-      --       ['d'] = 'explorer_del',
-      --       ['r'] = 'explorer_rename',
-      --       ['c'] = 'explorer_copy',
-      --       ['m'] = 'explorer_move',
-      --       ['o'] = 'explorer_open', -- open with system application
-      --       ['P'] = 'toggle_preview',
-      --       ['y'] = 'explorer_yank',
-      --       ['u'] = 'explorer_update',
-      --       ['<c-c>'] = 'tcd',
-      --       ['<leader>/'] = 'picker_grep',
-      --       ['<c-t>'] = 'terminal',
-      --       ['.'] = 'explorer_focus',
-      --       ['I'] = 'toggle_ignored',
-      --       ['H'] = 'toggle_hidden',
-      --       ['Z'] = 'explorer_close_all',
-      --       [']g'] = 'explorer_git_next',
-      --       ['[g'] = 'explorer_git_prev',
-      --       [']d'] = 'explorer_diagnostic_next',
-      --       ['[d'] = 'explorer_diagnostic_prev',
-      --       [']w'] = 'explorer_warn_next',
-      --       ['[w'] = 'explorer_warn_prev',
-      --       [']e'] = 'explorer_error_next',
-      --       ['[e'] = 'explorer_error_prev',
-      --     },
-      --   },
-      -- },
-    },
     animate = {
       fps = 30,
     },
@@ -167,6 +112,25 @@ return {
         preset = 'telescope',
       },
       sources = {
+        projects = {
+          finder = 'recent_projects',
+          format = 'file',
+          dev = {
+            '~/AppData/Local/nvim',
+            'd:/git_projects',
+            'd:/Projects/Git',
+          },
+          confirm = 'load_session',
+          patterns = { '.gitignore', 'Makefile' },
+          recent = true,
+          matcher = {
+            frecency = true, -- use frecency boosting
+            sort_empty = true, -- sort even when the filter is empty
+            cwd_bonus = false,
+          },
+          sort = { fields = { 'score:desc', 'idx' } },
+        },
+
         registers = {
           win = {
             input = {
@@ -227,6 +191,7 @@ return {
         explorer = {
           hidden = true,
           ignored = true,
+          watch = false,
           -- your explorer picker configuration comes here
           -- or leave it empty to use the default settings
         },
@@ -333,6 +298,19 @@ return {
         Snacks.picker.lsp_symbols()
       end,
       desc = 'Find Symbols',
+    },
+    {
+      '<leader>fp',
+      function()
+        require('persistence').save()
+        vim.cmd '%bd'
+        Snacks.picker.projects {
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+        }
+      end,
+      desc = 'Find Projects',
     },
     {
       '<leader>fl',

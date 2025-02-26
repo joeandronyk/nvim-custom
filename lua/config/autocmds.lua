@@ -1,9 +1,17 @@
 -- [[AutoLoad Session in Persistence]]
--- vim.api.nvim_create_autocmd('VimEnter', {
---   desc = 'Auto load Persistence session',
---   group = vim.api.nvim_create_augroup('persistence_group', { clear = true }),
+vim.api.nvim_create_autocmd('VimEnter', {
+  desc = 'Auto load Persistence session',
+  group = vim.api.nvim_create_augroup('persistence_group', { clear = true }),
+  callback = function()
+    require('persistence').load()
+  end,
+})
+
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = "PersistenceLoadPre",
 --   callback = function()
---     require('persistence').load()
+--     -- Close all buffers
+--     vim.cmd("%bd")
 --   end,
 -- })
 
