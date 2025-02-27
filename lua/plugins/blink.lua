@@ -19,10 +19,10 @@ return {
     -- See the full "keymap" documentation for information on defining your own keymap.
     cmdline = {
       keymap = {
-        -- ['<C-k>'] = { 'select_prev', 'fallback' },
-        -- ['<C-j>'] = { 'select_next', 'fallback' },
-        -- ['<Tab>'] = { 'accept', 'fallback' },
-        -- ['<CR>'] = { 'accept_and_enter', 'fallback' },
+        ['<C-k>'] = { 'select_prev', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
+        ['<Tab>'] = { 'accept', 'fallback' },
+        ['<CR>'] = { 'accept_and_enter', 'fallback' },
       },
     },
     keymap = {
@@ -33,15 +33,7 @@ return {
       ['<C-j>'] = { 'select_next', 'fallback' },
       ['<CR>'] = { 'accept', 'fallback' },
       ['<Tab>'] = { 'accept', 'fallback' },
-
       ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-      -- optionally, separate cmdline and terminal keymaps
-      -- cmdline = {
-      --   -- sets <CR> to accept the item and run the command immediately
-      --   -- use `select_accept_and_enter` to accept the item or the first item if none are selected
-      --   ['<CR>'] = { 'accept_and_enter', 'fallback' },
-      -- },
-      -- term = {}
     },
     completion = {
       -- 'prefix' will fuzzy match on the text before the cursor
