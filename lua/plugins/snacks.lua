@@ -120,7 +120,18 @@ return {
             'd:/git_projects',
             'd:/Projects/Git',
           },
-          confirm = 'load_session',
+          -- custom function for loading the session.
+          confirm = function(picker, item)
+            require('persistence').save()
+            picker:close()
+            if not item then
+              return
+            end
+            local dir = item.file
+            vim.cmd '%bd!'
+            vim.fn.chdir(dir)
+            require('persistence').load()
+          end,
           patterns = { '.gitignore', 'Makefile' },
           recent = true,
           matcher = {
@@ -283,7 +294,6 @@ return {
     {
       '"', -- use the normal registers key command
       function()
-        -- Snacks.picker.registers()
         Snacks.picker.registers {
           on_show = function()
             vim.cmd.stopinsert()
@@ -302,8 +312,7 @@ return {
     {
       '<leader>fp',
       function()
-        require('persistence').save()
-        vim.cmd '%bd!'
+        -- require('persistence').save()
         Snacks.picker.projects {
           on_show = function()
             vim.cmd.stopinsert()

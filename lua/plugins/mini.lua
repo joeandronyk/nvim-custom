@@ -1,8 +1,8 @@
-local minifiles_toggle = function(...)
-  if not MiniFiles.close() then
-    MiniFiles.open(...)
-  end
-end
+-- local minifiles_toggle = function(...)
+--   if not MiniFiles.close() then
+--     MiniFiles.open(...)
+--   end
+-- end
 
 return {
   { -- Collection of various small independent plugins/modules
@@ -25,7 +25,7 @@ return {
       -- - sr)'  - [S]urround [R]eplace [)] [']
       -- - saa(] - [S]urround [A]add [A]round [(]Brace [[]Paren
       require('mini.surround').setup()
-      -- require('mini.sessions').setup()
+      -- require('mini.sessions').setup({ autoread = true })
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
