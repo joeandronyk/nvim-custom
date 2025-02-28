@@ -286,13 +286,13 @@ return {
       end,
       desc = 'Toggle Explorer',
     },
-    {
-      '<leader>z',
-      function()
-        Snacks.zen()
-      end,
-      desc = 'Toggle Zen Mode',
-    },
+    -- {
+    --   '<leader>z',
+    --   function()
+    --     Snacks.zen()
+    --   end,
+    --   desc = 'Toggle Zen Mode',
+    -- },
     {
       '<leader>Z',
       function()

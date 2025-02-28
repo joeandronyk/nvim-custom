@@ -12,26 +12,31 @@ return {
         templates = home .. '/templates',
         template_new_daily = home .. '/templates/daily.md',
         uuid_sep = '_',
-        install_syntax = true,
-        command_palette_theme = 'ivy',
-        show_tags_theme = 'ivy',
+        install_syntax = false,
+        command_palette_theme = 'telescope',
+        show_tags_theme = 'telescope',
         media_previewer = 'telescope-media-files',
-        plug_into_calendar = false,
+        plug_into_calendar = true,
         weeknm = 4,
         calendar_monday = 1,
         subdirs_in_links = false,
+        -- auto-set telekasten filetype: if false, the telekasten filetype will not be used
+        -- and thus the telekasten syntax will not be loaded either
+        -- Set this to false to your render-markdown or something similar
+        auto_set_filetype = false,
       }
 
       vim.cmd.highlight { 'tkLink', 'ctermfg=Blue cterm=bold,underline guifg=lightblue gui=bold,underline' }
       vim.cmd.highlight { 'tkBrackets', 'ctermfg=gray guifg=gray' }
 
       -- Keybindings
-      vim.keymap.set('n', '<leader>zT', '<cmd>Telekasten goto_today<CR>')
+      vim.keymap.set('n', '<leader>zt', '<cmd>Telekasten goto_today<CR>')
       vim.keymap.set('n', '<leader>zf', '<cmd>Telekasten find_notes<CR>')
       vim.keymap.set('n', '<leader>zd', '<cmd>Telekasten find find_daily_notes<CR>')
       vim.keymap.set('n', '<leader>zg', '<cmd>Telekasten search_notes<CR>')
       vim.keymap.set('n', '<leader>zz', '<cmd>Telekasten follow_link<CR>')
       vim.keymap.set('n', '<leader>zn', '<cmd>Telekasten new_note<CR>')
+      vim.keymap.set('n', '<leader>zp', '<cmd>Telekasten panel<CR>')
 
       -- Open in Typora .. for images
       vim.keymap.set('n', '<leader>pt', "<cmd>!open -a Typora '%'<CR>")
