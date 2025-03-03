@@ -272,6 +272,7 @@ return {
       end,
       desc = 'Find Word',
     },
+    { "<leader>fu", function() Snacks.picker.undo() end, desc = "Undo History" },
     {
       '<leader><leader>',
       function()
