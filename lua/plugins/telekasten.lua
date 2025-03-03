@@ -32,7 +32,7 @@ return {
       -- Keybindings
       vim.keymap.set('n', '<leader>zt', '<cmd>Telekasten goto_today<CR>')
       vim.keymap.set('n', '<leader>zf', '<cmd>Telekasten find_notes<CR>')
-      vim.keymap.set('n', '<leader>zd', '<cmd>Telekasten find find_daily_notes<CR>')
+      vim.keymap.set('n', '<leader>zd', '<cmd>Telekasten find_daily_notes<CR>')
       vim.keymap.set('n', '<leader>zg', '<cmd>Telekasten search_notes<CR>')
       vim.keymap.set('n', '<leader>zz', '<cmd>Telekasten follow_link<CR>')
       vim.keymap.set('n', '<leader>zn', '<cmd>Telekasten new_note<CR>')

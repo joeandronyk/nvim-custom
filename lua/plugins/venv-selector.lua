@@ -5,6 +5,12 @@ return {
       'neovim/nvim-lspconfig',
       'mfussenegger/nvim-dap',
       'mfussenegger/nvim-dap-python', --optional
+      {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.8',
+        -- or                              , branch = '0.1.x',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+      },
     },
     event = 'VimEnter',
     branch = 'regexp', -- This is the regexp branch, use this for the new version
@@ -27,7 +33,7 @@ return {
             set_environment_variables = true, -- sets VIRTUAL_ENV or CONDA_PREFIX environment variables
             notify_user_on_venv_activation = true, -- notifies user on activation of the virtual env
             search_timeout = 5, -- if a search takes longer than this many seconds, stop it and alert the user
-            debug = false, -- enables you to run the VenvSelectLog command to view debug logs
+            debug = true, -- enables you to run the VenvSelectLog command to view debug logs
             require_lsp_activation = true, -- require activation of an lsp before setting env variables
           },
         },
