@@ -8,26 +8,40 @@ return {
     { '<leader>db', "<cmd>lua require'dap'.toggle_breakpoint()<cr>", mode = 'n', desc = 'Add Breakpoint' },
   },
   config = function()
-    -- The python path needs to be an absolute path.  Here we hijack venv-selection
-    -- to update the python path in dap-python.
-    local path = require 'venv-selector.path'
-    path.update_python_dap = function()
-      local dap_python_installed, dap_python = pcall(require, 'dap-python')
-      local dap_installed, dap = pcall(require, 'dap')
-      if dap_python_installed and dap_installed then
-        local python_path = require('venv-selector').python()
-        require('dap-python').setup(python_path)
-        print("Setting dap python interpreter to '" .. python_path .. "'")
+    local dap = require 'dap'
+    dap.adapters.debugpy = function(cb, config)
+    if config.request == 'attach' then
+      ---@diagnostic disable-next-line: undefined-field
+      local port = (config.connect or config).port
+      ---@diagnostic disable-next-line: undefined-field
+      local host = (config.connect or config).host or '127.0.0.1'
+
+      cb {
+        type = "executable",  -- this normally is 'server', but overrode it to work with maya.
+        port = assert(port, "`connect.port` is required for a python `attach` configuration"),
+        host = host,
+        options = {
+          source_filetype = "python",
+        },
+        command = require('venv-selector').python(),
+        args = { "-m", "debugpy.adapter" },
+      }
       else
-        log.debug 'Debugger not enabled: dap or dap-python not installed.'
+        cb {
+          type = 'executable',
+          command = require('venv-selector').python(),
+          args = { '-m', 'debugpy.adapter' },
+          options = {
+            source_filetype = 'python',
+          },
+        }
       end
     end
 
     table.insert(require('dap').configurations.python, {
       type = 'debugpy',
       request = 'attach',
-      pythonPath = python_path,
-      -- request = 'launch',
+      pythonPath = require('venv-selector').python(),
       name = 'My Python Debugger: Attach using Process Id',
       processId = require('dap.utils').pick_process,
       justMyCode = true,
@@ -38,9 +52,7 @@ return {
       redirectOutput = false,
       logToFile = true,
       sourceMaps = true,
-      timeout = 50000,
-      initialize_timeout_sec = 100,
-      console = 'integratedTerminal',
+      console = 'nil',
     })
 
     table.insert(require('dap').configurations.python, {
