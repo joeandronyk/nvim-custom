@@ -18,6 +18,16 @@ return {
     scope = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
+    gitbrowse = {
+      url_patterns = {
+        ["gitlab%.ea%.com"] = {
+          branch = "/-/tree/{branch}",
+          file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
+          permalink = "/-/blob/{commit}/{file}#L{line_start}-L{line_end}",
+          commit = "/-/commit/{commit}",
+        },
+      },
+    },
     notifier = {
       enabled = true,
       timeout = 3000,
@@ -272,6 +282,7 @@ return {
       end,
       desc = 'Find Word',
     },
+    { "<leader>fu", function() Snacks.picker.undo() end, desc = "Undo History" },
     {
       '<leader><leader>',
       function()
