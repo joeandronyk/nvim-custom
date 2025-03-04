@@ -15,6 +15,11 @@ return {
     local mason_lspconfig = require 'mason-lspconfig'
     local keymap = vim.keymap -- for conciseness
 
+    -- disable virtual text (diagnostic messages in line)
+    vim.diagnostic.config {
+      virtual_text = false,
+    }
+
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('UserLspConfig', {}),
       callback = function(ev)
