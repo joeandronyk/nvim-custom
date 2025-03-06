@@ -31,7 +31,8 @@ diag_override = function(cwd)
         end
       end
     else
-      print('Buffer does not exist', diag.bufnr)
+      local message = 'Buffer does not exist ' .. diag.bufnr
+      vim.notify(message, vim.log.levels.ERROR, { title = 'Buffer Not Found' })
     end
   end
 
