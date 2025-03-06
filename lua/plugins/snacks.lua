@@ -177,6 +177,7 @@ return {
           ignored = false,
           watch = false,
           include = { '.payload', '.mortar' },
+          replace_netrw = true,
           -- your explorer picker configuration comes here
           -- or leave it empty to use the default settings
         },
