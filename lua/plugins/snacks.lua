@@ -30,9 +30,9 @@ DiagOverride = function(cwd)
           add(dir, diag)
         end
       end
-    else
-      local message = 'Buffer does not exist ' .. diag.bufnr
-      vim.notify(message, vim.log.levels.ERROR, { title = 'Buffer Not Found' })
+      -- else
+      --   local message = 'Buffer does not exist ' .. diag.bufnr
+      --   vim.notify(message, vim.log.levels.ERROR, { title = 'Buffer Not Found' })
     end
   end
 
