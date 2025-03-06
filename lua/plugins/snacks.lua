@@ -1,4 +1,4 @@
-diag_override = function(cwd)
+DiagOverride = function(cwd)
   local Tree = require 'snacks.explorer.tree'
   local node = Tree:find(cwd)
 
@@ -488,7 +488,7 @@ return {
   init = function()
     -- override the diagnostics to make sure buffers are valid to avoid the error
     local snacks_diag = require 'snacks.explorer.diagnostics'
-    snacks_diag.update = diag_override
+    snacks_diag.update = DiagOverride
 
     vim.api.nvim_create_autocmd('User', {
       pattern = 'VeryLazy',
