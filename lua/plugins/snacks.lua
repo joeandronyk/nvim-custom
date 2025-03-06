@@ -1,3 +1,43 @@
+diag_override = function(cwd)
+  local Tree = require 'snacks.explorer.tree'
+  local node = Tree:find(cwd)
+
+  local snapshot = Tree:snapshot(node, { 'severity' })
+
+  Tree:walk(node, function(n)
+    n.severity = nil
+  end, { all = true })
+
+  local diags = vim.diagnostic.get()
+
+  ---@param path string
+  ---@param diag vim.Diagnostic
+  local function add(path, diag)
+    local n = Tree:find(path)
+    local severity = tonumber(diag.severity) or vim.diagnostic.severity.INFO
+    n.severity = math.min(n.severity or severity, severity)
+  end
+
+  for _, diag in ipairs(diags) do
+    if vim.api.nvim_buf_is_valid(diag.bufnr) then
+      local buf_name = vim.api.nvim_buf_get_name(diag.bufnr)
+      local path = diag.bufnr and buf_name
+      path = path and path ~= '' and svim.fs.normalize(path) or nil
+      if path then
+        add(path, diag)
+        add(cwd, diag)
+        for dir in Snacks.picker.util.parents(path, cwd) do
+          add(dir, diag)
+        end
+      end
+    else
+      print('Buffer does not exist', diag.bufnr)
+    end
+  end
+
+  return Tree:changed(node, snapshot)
+end
+
 return {
   'folke/snacks.nvim',
   priority = 1000,
@@ -20,11 +60,11 @@ return {
     input = { enabled = true },
     gitbrowse = {
       url_patterns = {
-        ["gitlab%.ea%.com"] = {
-          branch = "/-/tree/{branch}",
-          file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
-          permalink = "/-/blob/{commit}/{file}#L{line_start}-L{line_end}",
-          commit = "/-/commit/{commit}",
+        ['gitlab%.ea%.com'] = {
+          branch = '/-/tree/{branch}',
+          file = '/-/blob/{branch}/{file}#L{line_start}-L{line_end}',
+          permalink = '/-/blob/{commit}/{file}#L{line_start}-L{line_end}',
+          commit = '/-/commit/{commit}',
         },
       },
     },
@@ -282,7 +322,13 @@ return {
       end,
       desc = 'Find Word',
     },
-    { "<leader>fu", function() Snacks.picker.undo() end, desc = "Undo History" },
+    {
+      '<leader>fu',
+      function()
+        Snacks.picker.undo()
+      end,
+      desc = 'Undo History',
+    },
     {
       '<leader><leader>',
       function()
@@ -439,6 +485,10 @@ return {
     -- },
   },
   init = function()
+    -- override the diagnostics to make sure buffers are valid to avoid the error
+    local snacks_diag = require 'snacks.explorer.diagnostics'
+    snacks_diag.update = diag_override
+
     vim.api.nvim_create_autocmd('User', {
       pattern = 'VeryLazy',
       callback = function()
