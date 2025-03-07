@@ -4,7 +4,15 @@ return {
   lazy = false,
   priority = 1000,
   config = function()
+    -- Replace functions in the original module
+    local lualine_git = require 'lualine.components.branch.git_branch'
+    local custom_lualine_git = require 'ja_utils.lualine_git'
+    for k, v in pairs(custom_lualine_git) do
+      lualine_git[k] = v
+    end
+
     require('lualine').setup {
+
       options = {
         icons_enabled = true,
         theme = 'nightfly',
