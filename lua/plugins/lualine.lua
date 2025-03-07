@@ -4,13 +4,6 @@ return {
   lazy = false,
   priority = 1000,
   config = function()
-    -- Replace functions in the original module
-    local lualine_git = require 'lualine.components.branch.git_branch'
-    local custom_lualine_git = require 'ja_utils.lualine_git'
-    for k, v in pairs(custom_lualine_git) do
-      lualine_git[k] = v
-    end
-
     require('lualine').setup {
 
       options = {
@@ -36,7 +29,17 @@ return {
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { { 'branch', color = { bg = '#39496c', fg = '#b8c1d0' }, separator = { left = '', right = '' } } },
+        lualine_b = {
+          {
+            'git_branch',
+            fmt = function()
+              -- this requires the gitsigns plugin
+              return vim.b.gitsigns_head or vim.g.gitsigns_head or ''
+            end,
+            color = { bg = '#39496c', fg = '#b8c1d0' },
+            separator = { left = '', right = '' },
+          },
+        },
         lualine_c = { { 'filename', path = 1 } },
         lualine_x = { 'filetype' },
         lualine_y = {
