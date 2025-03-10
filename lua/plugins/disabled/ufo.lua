@@ -1,7 +1,7 @@
 return {
   'kevinhwang91/nvim-ufo',
   lazy = false,
-  enabled = true,
+  enabled = false,
   dependencies = 'kevinhwang91/promise-async',
   config = function()
     vim.o.foldmethod = 'manual'

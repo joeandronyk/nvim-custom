@@ -14,8 +14,11 @@ vim.opt.termguicolors = true -- Enable 24-bit RGB colors-
 vim.opt.mouse = 'a' -- Enable mouse mode, can be useful for resizing splits!
 
 -- code folding
-vim.o.foldlevel = 99 -- Using ufo provider needs a large value
+vim.o.foldexpr = "v:lua.require('lazyvim.util.ui').foldexpr()"
+vim.o.foldmethod = 'expr'
 vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:►]]
 
 -- Don't show the mode, since it's already in the status line
 -- vim.opt.showmode = true
