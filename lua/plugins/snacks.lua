@@ -178,6 +178,8 @@ return {
           watch = false,
           include = { '.payload', '.mortar' },
           replace_netrw = true,
+          diagnostics = true,
+          git_status = true,
           -- your explorer picker configuration comes here
           -- or leave it empty to use the default settings
         },
