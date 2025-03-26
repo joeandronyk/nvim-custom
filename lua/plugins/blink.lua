@@ -19,6 +19,7 @@ return {
     -- See the full "keymap" documentation for information on defining your own keymap.
     cmdline = {
       completion = {
+        list = { selection = { preselect = false, auto_insert = true } },
         menu = {
           auto_show = function(ctx)
             return vim.fn.getcmdtype() == ':'

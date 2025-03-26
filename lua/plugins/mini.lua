@@ -73,6 +73,7 @@ return {
       -- require('mini.tabline').setup()
 
       require('mini.icons').setup()
+      require('mini.pairs').setup()
 
       -- require('mini.files').setup {
       --
