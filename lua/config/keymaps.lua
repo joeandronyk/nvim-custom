@@ -1,7 +1,8 @@
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 vim.keymap.set('i', 'jj', '<ESC>', { silent = true })
---
+vim.keymap.set('i', '<C-v>', '<C-r>+', { silent = true })
+
 -- Disable the default 'q' key for macro recording
 -- Map 'Q' to start and stop macro recording
 vim.api.nvim_set_keymap('n', 'q', '<Nop>', { noremap = true, silent = true })
