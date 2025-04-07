@@ -44,7 +44,8 @@ return {
         lualine_x = {
           {
             'lsp_status',
-            icon = '', -- f013
+            -- icon = '', -- f013
+            icon = '', -- f013
             symbols = {
               -- Standard unicode symbols to cycle through for LSP progress:
               spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
@@ -56,7 +57,7 @@ return {
             -- List of LSP names to ignore (e.g., `null-ls`):
             ignore_lsp = { 'ruff', 'copilot' },
           },
-          { 'filetype' },
+          -- { 'filetype' },
         },
         lualine_y = {
           {
@@ -66,10 +67,11 @@ return {
             fmt = function()
               local virtual_env = os.getenv 'VIRTUAL_ENV'
               if virtual_env then
-                local cleaned_virtual_env = virtual_env:gsub('\\', '/')
-                local project_root = vim.fn.getcwd():gsub('\\', '/')
-                local relative_path = cleaned_virtual_env:gsub('^' .. project_root .. '/', '')
-                return relative_path:match '.*/(.+)' or relative_path -- Extract the .env folder name
+                return '.venv'
+                -- local cleaned_virtual_env = virtual_env:gsub('\\', '/')
+                -- local project_root = vim.fn.getcwd():gsub('\\', '/')
+                -- local relative_path = cleaned_virtual_env:gsub('^' .. project_root .. '/', '')
+                -- return relative_path:match '.*/(.+)' or relative_path -- Extract the .env folder name
               else
                 return ''
               end

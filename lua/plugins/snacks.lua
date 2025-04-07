@@ -126,6 +126,7 @@ return {
         },
         files = {
           hidden = true,
+          include = { '.payload', '.mortar' },
           actions = {
             switch_to_grep = function(picker, _)
               local snacks = require 'snacks'
@@ -148,6 +149,7 @@ return {
         },
         grep = {
           hidden = true,
+          include = { '.payload', '.mortar' },
           actions = {
 
             switch_to_files = function(picker, _)
@@ -171,6 +173,7 @@ return {
         },
         word = {
           hidden = true,
+          include = { '.payload', '.mortar' },
         },
         explorer = {
           hidden = true,

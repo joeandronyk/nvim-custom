@@ -17,13 +17,13 @@ return {
     config = function()
       require('venv-selector').setup {
         settings = {
-          search = {
-            cwd = false,
-            hatch = false,
-            workspace = {
-              command = 'fd -H -I python.exe',
-            },
-          },
+          -- search = {
+          --   cwd = false,
+          --   hatch = true,
+          --   workspace = {
+          --     command = 'fd -H -I python.exe',
+          --   },
+          -- },
           options = {
             on_venv_activate_callback = nil, -- callback function for after a venv activates
             enable_default_searches = true, -- switches all default searches on/off
@@ -33,7 +33,7 @@ return {
             set_environment_variables = true, -- sets VIRTUAL_ENV or CONDA_PREFIX environment variables
             notify_user_on_venv_activation = false, -- notifies user on activation of the virtual env
             search_timeout = 5, -- if a search takes longer than this many seconds, stop it and alert the user
-            debug = false, -- enables you to run the VenvSelectLog command to view debug logs
+            debug = true, -- enables you to run the VenvSelectLog command to view debug logs
             require_lsp_activation = true, -- require activation of an lsp before setting env variables
           },
         },
