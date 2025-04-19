@@ -1,22 +1,5 @@
 return {
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    enabled = false,
-    init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      -- vim.cmd.colorscheme 'tokyonight-night'
-
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
-    end,
-  },
-
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -24,7 +7,7 @@ return {
     priority = 1000,
     config = function()
       require('catppuccin').setup {
-        flavour = 'mocha', -- latte, frappe, macchiato, mocha
+        flavour = 'macchiato', -- latte, frappe, macchiato, mocha
         background = { -- :h background
           light = 'latte',
           dark = 'mocha',
@@ -63,7 +46,7 @@ return {
           gitsigns = true,
           nvimtree = true,
           treesitter = true,
-          notify = false,
+          notify = true,
           mini = {
             enabled = true,
             indentscope_color = '',
@@ -71,7 +54,7 @@ return {
           -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
       }
-      -- vim.cmd.colorscheme 'catppuccin-mocha'
+      vim.cmd.colorscheme 'catppuccin-macchiato'
     end,
   },
 
@@ -156,7 +139,7 @@ return {
         end,
       }
 
-      -- vim.cmd 'colorscheme rose-pine'
+      vim.cmd 'colorscheme rose-pine'
       -- vim.cmd 'colorscheme rose-pine-main'
       -- vim.cmd 'colorscheme rose-pine-moon'
       -- vim.cmd 'colorscheme rose-pine-dawn'
@@ -298,81 +281,6 @@ return {
       }
       -- setup must be called before loading
       vim.cmd 'colorscheme kanagawa-wave'
-    end,
-  },
-
-  {
-    'ellisonleao/gruvbox.nvim',
-    priority = 1000,
-    enabled = false,
-    -- 'LazyVim/LazyVim',
-    -- opts = {
-    --   colorscheme = 'gruvbox',
-    --   background = 'dark',
-    -- },
-    config = function()
-      require('gruvbox').setup {
-        terminal_colors = true, -- add neovim terminal colors
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = true,
-          emphasis = true,
-          comments = true,
-          operators = false,
-          folds = true,
-        },
-        strikethrough = true,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        invert_intend_guides = false,
-        inverse = false, -- invert background for search, diffs, statuslines and errors
-        contrast = 'soft', -- can be "hard", "soft" or empty string
-        palette_overrides = {},
-        overrides = {},
-        dim_inactive = false,
-        transparent_mode = true,
-      }
-      -- vim.cmd.colorscheme 'gruvbox'
-    end,
-  },
-
-  {
-    'ellisonleao/gruvbox.nvim',
-    priority = 1000,
-    enabled = false,
-    'LazyVim/LazyVim',
-    opts = {
-      colorscheme = 'gruvbox',
-      background = 'dark',
-    },
-    config = function()
-      require('gruvbox').setup {
-        terminal_colors = true, -- add neovim terminal colors
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = true,
-          emphasis = true,
-          comments = true,
-          operators = false,
-          folds = true,
-        },
-        strikethrough = true,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        invert_intend_guides = false,
-        inverse = false, -- invert background for search, diffs, statuslines and errors
-        contrast = 'soft', -- can be "hard", "soft" or empty string
-        palette_overrides = {},
-        overrides = {},
-        dim_inactive = false,
-        transparent_mode = true,
-      }
     end,
   },
 
