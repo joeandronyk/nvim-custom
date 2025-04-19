@@ -84,6 +84,11 @@ return {
       layout = {
         preset = 'telescope',
       },
+      formatters = {
+        file = {
+          truncate = 10000,
+        },
+      },
       sources = {
         projects = {
           finder = 'recent_projects',
