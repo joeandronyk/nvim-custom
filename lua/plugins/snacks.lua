@@ -1,43 +1,43 @@
-DiagOverride = function(cwd)
-  local Tree = require 'snacks.explorer.tree'
-  local node = Tree:find(cwd)
-
-  local snapshot = Tree:snapshot(node, { 'severity' })
-
-  Tree:walk(node, function(n)
-    n.severity = nil
-  end, { all = true })
-
-  local diags = vim.diagnostic.get()
-
-  ---@param path string
-  ---@param diag vim.Diagnostic
-  local function add(path, diag)
-    local n = Tree:find(path)
-    local severity = tonumber(diag.severity) or vim.diagnostic.severity.INFO
-    n.severity = math.min(n.severity or severity, severity)
-  end
-
-  for _, diag in ipairs(diags) do
-    if vim.api.nvim_buf_is_valid(diag.bufnr) then
-      local buf_name = vim.api.nvim_buf_get_name(diag.bufnr)
-      local path = diag.bufnr and buf_name
-      path = path and path ~= '' and svim.fs.normalize(path) or nil
-      if path then
-        add(path, diag)
-        add(cwd, diag)
-        for dir in Snacks.picker.util.parents(path, cwd) do
-          add(dir, diag)
-        end
-      end
-      -- else
-      --   local message = 'Buffer does not exist ' .. diag.bufnr
-      --   vim.notify(message, vim.log.levels.ERROR, { title = 'Buffer Not Found' })
-    end
-  end
-
-  return Tree:changed(node, snapshot)
-end
+-- DiagOverride = function(cwd)
+--   local node = Tree:find(cwd)
+--   local Tree = require 'snacks.explorer.tree'
+--
+--   local snapshot = Tree:snapshot(node, { 'severity' })
+--
+--   Tree:walk(node, function(n)
+--     n.severity = nil
+--   end, { all = true })
+--
+--   local diags = vim.diagnostic.get()
+--
+--   ---@param path string
+--   ---@param diag vim.Diagnostic
+--   local function add(path, diag)
+--     local n = Tree:find(path)
+--     local severity = tonumber(diag.severity) or vim.diagnostic.severity.INFO
+--     n.severity = math.min(n.severity or severity, severity)
+--   end
+--
+--   for _, diag in ipairs(diags) do
+--     if vim.api.nvim_buf_is_valid(diag.bufnr) then
+--       local buf_name = vim.api.nvim_buf_get_name(diag.bufnr)
+--       local path = diag.bufnr and buf_name
+--       path = path and path ~= '' and svim.fs.normalize(path) or nil
+--       if path then
+--         add(path, diag)
+--         add(cwd, diag)
+--         for dir in Snacks.picker.util.parents(path, cwd) do
+--           add(dir, diag)
+--         end
+--       end
+--       -- else
+--       --   local message = 'Buffer does not exist ' .. diag.bufnr
+--       --   vim.notify(message, vim.log.levels.ERROR, { title = 'Buffer Not Found' })
+--     end
+--   end
+--
+--   return Tree:changed(node, snapshot)
+-- end
 
 return {
   'folke/snacks.nvim',
@@ -118,16 +118,6 @@ return {
             cwd_bonus = false,
           },
           sort = { fields = { 'score:desc', 'idx' } },
-        },
-
-        registers = {
-          win = {
-            input = {
-              keys = {
-                ['"'] = { '', desc = 'Show registers', mode = { 'n' } },
-              },
-            },
-          },
         },
         files = {
           hidden = true,
@@ -277,17 +267,6 @@ return {
       desc = 'Find Diagnostics',
     },
     {
-      '"', -- use the normal registers key command
-      function()
-        Snacks.picker.registers {
-          on_show = function()
-            vim.cmd.stopinsert()
-          end,
-        }
-      end,
-      desc = 'Find Registers',
-    },
-    {
       '<leader>fs',
       function()
         Snacks.picker.lsp_symbols()
@@ -297,7 +276,6 @@ return {
     {
       '<leader>fp',
       function()
-        -- require('persistence').save()
         Snacks.picker.projects {
           on_show = function()
             vim.cmd.stopinsert()
@@ -498,8 +476,8 @@ return {
   },
   init = function()
     -- override the diagnostics to make sure buffers are valid to avoid the error
-    local snacks_diag = require 'snacks.explorer.diagnostics'
-    snacks_diag.update = DiagOverride
+    -- local snacks_diag = require 'snacks.explorer.diagnostics'
+    -- snacks_diag.update = DiagOverride
 
     vim.api.nvim_create_autocmd('User', {
       pattern = 'VeryLazy',
@@ -512,7 +490,11 @@ return {
           Snacks.debug.backtrace()
         end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
-
+        -- To see the available highlights run this command
+        -- lua: Snacks.picker.highlights({pattern = "hl_group:^Snacks"})
+        vim.api.nvim_set_hl(0, 'SnacksPickerPathHidden', { fg = '#ff0000', bg = 'NONE', italic = true })
+        vim.api.nvim_set_hl(0, 'SnacksPickerPathIgnored', { fg = '#00ff00', bg = 'NONE', bold = true })
+        vim.api.nvim_set_hl(0, 'SnacksPickerDir', { fg = '#658594', bg = 'NONE', bold = true })
         -- Create some toggle mappings
         Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>us'
         Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>uw'
