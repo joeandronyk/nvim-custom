@@ -14,8 +14,8 @@ vim.opt.termguicolors = true -- Enable 24-bit RGB colors-
 vim.opt.mouse = 'a' -- Enable mouse mode, can be useful for resizing splits!
 
 -- code folding
-vim.o.foldexpr = "v:lua.require('lazyvim.util.ui').foldexpr()"
 vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:►]]
@@ -69,5 +69,5 @@ vim.opt.title = true
 vim.opt.titlestring = [[%{substitute(getcwd(),'^.*\\','','')}]]
 
 vim.o.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions'
-
+-- vim.o.shell = 'pwsh.exe'
 -- vim: ts=2 sts=2 sw=2 et
