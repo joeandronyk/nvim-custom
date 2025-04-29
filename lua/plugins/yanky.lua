@@ -3,6 +3,7 @@ return {
   dependencies = {
     { 'kkharji/sqlite.lua' },
   },
+  enabled = true,
   opts = {
     ring = { storage = 'sqlite' },
   },
@@ -35,7 +36,7 @@ return {
   config = function()
     require('yanky').setup {
       ring = {
-        history_length = 100,
+        history_length = 20,
         storage = 'shada',
         sync_with_numbered_registers = true,
         cancel_event = 'update',
@@ -46,6 +47,17 @@ return {
       system_clipboard = {
         sync_with_ring = true,
       },
+      highlight = {
+        on_put = false,
+        on_yank = false,
+        timer = 500,
+      },
+      preserve_cursor_position = {
+        enabled = true,
+      },
+      -- textobj = {
+      --   enabled = false,
+      -- },
     }
   end,
 }
