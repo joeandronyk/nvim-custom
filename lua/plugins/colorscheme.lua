@@ -224,7 +224,6 @@ return {
             PmenuThumb = { bg = theme.ui.bg_p2 },
 
             NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-            CursorLine = { bg = '#2c3043', fg = '#acb4c2' }, -- match lualine's nightfly theme
             GitSignsAdd = { fg = '#549159' },
             GitSignsChange = { fg = '#375fad' },
             GitSignsDelete = { fg = '#c34043' },
