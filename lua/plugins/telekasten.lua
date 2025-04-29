@@ -38,9 +38,6 @@ return {
       vim.keymap.set('n', '<leader>zn', '<cmd>Telekasten new_note<CR>')
       vim.keymap.set('n', '<leader>zp', '<cmd>Telekasten panel<CR>')
 
-      -- Open in Typora .. for images
-      vim.keymap.set('n', '<leader>pt', "<cmd>!open -a Typora '%'<CR>")
-
       vim.keymap.set('i', '[[', '<cmd>Telekasten insert_link<CR>')
       --    ["<leader>zW"] = { "<cmd>Telekasten goto_thisweek<CR>", "Go to this week"},
       --    ["<leader>zw"] = { "<cmd>Telekasten find_weekly_notes<CR>", "Find weekly notes"},
