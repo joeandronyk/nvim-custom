@@ -30,6 +30,7 @@ DiagOverride = function(cwd)
           add(dir, diag)
         end
       end
+      -- I removed this because it was erroring.
       -- else
       --   local message = 'Buffer does not exist ' .. diag.bufnr
       --   vim.notify(message, vim.log.levels.ERROR, { title = 'Buffer Not Found' })
@@ -176,8 +177,8 @@ return {
           watch = false,
           include = { '.payload', '.mortar' },
           replace_netrw = true,
-          diagnostics = true,
-          git_status = true,
+          diagnostics = false,
+          git_status = false,
           -- your explorer picker configuration comes here
           -- or leave it empty to use the default settings
         },
@@ -492,8 +493,8 @@ return {
         vim.print = _G.dd -- Override print to use snacks for `:=` command
         -- To see the available highlights run this command
         -- lua: Snacks.picker.highlights({pattern = "hl_group:^Snacks"})
-        vim.api.nvim_set_hl(0, 'SnacksPickerPathHidden', { fg = '#ff0000', bg = 'NONE', italic = true })
-        vim.api.nvim_set_hl(0, 'SnacksPickerPathIgnored', { fg = '#00ff00', bg = 'NONE', bold = true })
+        vim.api.nvim_set_hl(0, 'SnacksPickerPathHidden', { fg = '#658594', bg = 'NONE' })
+        vim.api.nvim_set_hl(0, 'SnacksPickerPathIgnored', { fg = '#658594', bg = 'NONE' })
         vim.api.nvim_set_hl(0, 'SnacksPickerDir', { fg = '#658594', bg = 'NONE', bold = true })
         -- Create some toggle mappings
         Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>us'
