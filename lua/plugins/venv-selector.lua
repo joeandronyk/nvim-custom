@@ -25,9 +25,9 @@ return {
             cached_venv_automatic_activation = true, -- if set to false, the VenvSelectCached command becomes available to manually activate them.
             activate_venv_in_terminal = true, -- activate the selected python interpreter in terminal windows opened from neovim
             set_environment_variables = true, -- sets VIRTUAL_ENV or CONDA_PREFIX environment variables
-            notify_user_on_venv_activation = false, -- notifies user on activation of the virtual env
+            notify_user_on_venv_activation = true, -- notifies user on activation of the virtual env
             search_timeout = 5, -- if a search takes longer than this many seconds, stop it and alert the user
-            debug = false, -- enables you to run the VenvSelectLog command to view debug logs
+            debug = true, -- enables you to run the VenvSelectLog command to view debug logs
             picker = 'auto', -- The picker to use. Valid options are "telescope", "fzf-lua", "native", or "auto"
             require_lsp_activation = true, -- require activation of an lsp before setting env variables
           },

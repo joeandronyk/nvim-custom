@@ -19,27 +19,32 @@ return {
         require 'neotest-python' {
           dap = { justMyCode = false },
           runner = 'pytest',
-          args = { '-vv', '--benchmark-skip' },
+          pytest_discover_instances = false,
           python = function()
             local interpreter = require('venv-selector').python()
-            vim.notify('Python interpreter is: ', p)
-            return interpreter
+            if interpreter then
+              return interpreter
+            else
+              return nil
+              -- return '.venv/Scripts/python.exe'
+            end
           end,
-          -- pytest_discover_instances = true,
+          args = { '-vv', '--disable-warnings' },
         },
       },
     }
 
     -- Keymaps for running tests
-    vim.keymap.set('n', '<leader>tc', function()
-      neotest.run.run()
+    vim.keymap.set('n', '<leader>ts', function()
       neotest.summary.open()
-    end, { desc = 'Run test under cursor' })
+      -- neotest.run.run()
+      neotest.summary.open()
+    end, { desc = 'Open Test Summary' })
 
-    vim.keymap.set('n', '<leader>tb', function()
-      neotest.run.run(vim.fn.expand '%')
-      neotest.summary.open()
-    end, { desc = 'Run all tests in current buffer' })
+    -- vim.keymap.set('n', '<leader>tb', function()
+    --   neotest.run.run(vim.fn.expand '%')
+    --   neotest.summary.open()
+    -- end, { desc = 'Run all tests in current buffer' })
 
     vim.keymap.set('n', '<leader>ta', function()
       neotest.run.run(vim.fn.getcwd())
