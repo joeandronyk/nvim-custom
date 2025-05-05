@@ -25,8 +25,8 @@ return {
             if interpreter then
               return interpreter
             else
-              return nil
-              -- return '.venv/Scripts/python.exe'
+              vim.notify 'Falling back to the .venv folder'
+              return '.venv/Scripts/python.exe'
             end
           end,
           args = { '-vv', '--disable-warnings' },
@@ -35,16 +35,13 @@ return {
     }
 
     -- Keymaps for running tests
-    vim.keymap.set('n', '<leader>ts', function()
-      neotest.summary.open()
-      -- neotest.run.run()
+    vim.keymap.set('n', '<leader>tt', function()
       neotest.summary.open()
     end, { desc = 'Open Test Summary' })
 
-    -- vim.keymap.set('n', '<leader>tb', function()
-    --   neotest.run.run(vim.fn.expand '%')
-    --   neotest.summary.open()
-    -- end, { desc = 'Run all tests in current buffer' })
+    vim.keymap.set('n', '<leader>to', function()
+      neotest.output_panel.open()
+    end, { desc = 'Open Output Panel' })
 
     vim.keymap.set('n', '<leader>ta', function()
       neotest.run.run(vim.fn.getcwd())

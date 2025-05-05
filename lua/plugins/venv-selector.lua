@@ -29,7 +29,7 @@ return {
             search_timeout = 5, -- if a search takes longer than this many seconds, stop it and alert the user
             debug = true, -- enables you to run the VenvSelectLog command to view debug logs
             picker = 'auto', -- The picker to use. Valid options are "telescope", "fzf-lua", "native", or "auto"
-            require_lsp_activation = true, -- require activation of an lsp before setting env variables
+            require_lsp_activation = false, -- require activation of an lsp before setting env variables
           },
         },
       }
