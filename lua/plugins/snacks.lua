@@ -376,13 +376,14 @@ return {
       end,
       desc = 'Delete Buffer',
     },
-    -- {
-    --   '<leader>cR',
-    --   function()
-    --     Snacks.rename.rename_file()
-    --   end,
-    --   desc = 'Rename File',
-    -- },
+    {
+      '<leader>fc',
+      function()
+        Snacks.picker.git_status()
+      end,
+      desc = 'Find Changed Files',
+    },
+
     {
       '<leader>gB',
       function()
