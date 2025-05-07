@@ -22,11 +22,14 @@ return {
           pytest_discover_instances = false,
           python = function()
             local interpreter = require('venv-selector').python()
+            local alt_interpreter = os.getenv 'VIRTUAL_ENV' .. '\\Scripts\\python.exe'
             if interpreter then
               return interpreter
+            elseif vim.loop.fs_stat(alt_interpreter) then
+              return alt_interpreter
             else
-              vim.notify 'Falling back to the .venv folder'
-              return '.venv/Scripts/python.exe'
+              vim.notify 'No interpreter found!  Unable to run tests.'
+              return nil
             end
           end,
           args = { '-vv', '--disable-warnings' },
