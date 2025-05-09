@@ -7,6 +7,20 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
 })
 
+-- [[Attach Gitsigns after Persistence loads buffers]]
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'PersistenceLoadPost',
+  group = vim.api.nvim_create_augroup('UserGitSigns', { clear = true }),
+  callback = function()
+    local gitsigns = require 'gitsigns'
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_is_loaded(buf) then
+        gitsigns.attach(buf) -- Attach Gitsigns to restored buffers
+      end
+    end
+  end,
+})
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -18,6 +32,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- [[RuffCheck command]]
 vim.api.nvim_create_user_command('RuffCheck', function()
   -- Run Ruff and capture the output
   local output = vim.fn.systemlist 'ruff check .'
