@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
 
 -- [[Attach Gitsigns after Persistence loads buffers]]
 vim.api.nvim_create_autocmd('User', {
+  -- The pattern makes it so that it only runs after the Persistence plugin has loaded buffers
   pattern = 'PersistenceLoadPost',
   group = vim.api.nvim_create_augroup('UserGitSigns', { clear = true }),
   callback = function()
