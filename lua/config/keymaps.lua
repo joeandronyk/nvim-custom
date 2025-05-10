@@ -4,9 +4,8 @@ vim.keymap.set('i', 'jj', '<ESC>', { silent = true })
 vim.keymap.set('i', '<C-v>', '<C-r>+', { silent = true })
 
 -- Disable the default 'q' key for macro recording
--- Map 'Q' to start and stop macro recording
-vim.api.nvim_set_keymap('n', 'q', '<Nop>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'Q', 'q', { noremap = true, silent = true })
+-- Map '<leader>q' to start and stop macro recording
+vim.api.nvim_set_keymap('n', '<leader>q', 'q', { desc = 'Record Macro', noremap = true, silent = true })
 
 -- Keymap to switch to the previous buffer
 vim.api.nvim_set_keymap('n', '<leader>bb', ':b#<CR>', { noremap = true, silent = true })

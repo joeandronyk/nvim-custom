@@ -1,3 +1,16 @@
+-- [[Macro Recording Feedback]]
+vim.api.nvim_create_autocmd('RecordingEnter', {
+  callback = function()
+    vim.notify('Recording macro...', vim.log.levels.INFO)
+  end,
+})
+
+vim.api.nvim_create_autocmd('RecordingLeave', {
+  callback = function()
+    vim.notify('Stopped recording macro.', vim.log.levels.INFO)
+  end,
+})
+
 -- [[AutoLoad Session in Persistence]]
 vim.api.nvim_create_autocmd('VimEnter', {
   desc = 'Auto load Persistence session',
